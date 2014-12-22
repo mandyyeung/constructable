@@ -1,0 +1,12 @@
+Models & Database Structure:
+1. Users
+  - Devise (first_name:string, last_name:string, email:string, pswd:string)
+  has_many :requests
+  has_many :reponses
+2. Request
+  - user_id:integer, subject: string, body:text
+  belongs_to :user
+3. Response
+  - request_id:integer, user_id:integer, body:text
+  belongs_to :request
+  belongs_to :user
