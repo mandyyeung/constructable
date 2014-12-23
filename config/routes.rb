@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :requests do
+  root to:'requests#index'
+  resources :requests do 
     resources :responses, module: :requests
   end
 end
