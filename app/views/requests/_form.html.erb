@@ -1,7 +1,9 @@
-<%= form_form @request do |f| %>
+<%= form_for @request do |f| %>
   <div class="form-group">
     <%= f.text_field :subject, placeholder: "Subject", class: "form-control" %>
-    <%= f.textarea :body, placeholder: "Request", class:"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.text_area :body, placeholder: "Request", rows: 10, class:"form-control" %>
   </div>
 
   <div class="form-group">

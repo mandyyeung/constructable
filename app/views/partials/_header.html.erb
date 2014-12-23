@@ -14,7 +14,13 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li><a href="#">Home</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">RFIs<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><%= link_to "View All", requests_path %></li>
+            <li><%= link_to "New RFI", new_request_path %></li>
+          </ul>
+        </li>
         <li><a href="#">About</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
