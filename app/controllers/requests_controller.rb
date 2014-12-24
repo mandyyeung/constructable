@@ -23,10 +23,15 @@ class RequestsController < ApplicationController
   end
 
   def edit
-    if @request.update_attributes(request_params)
-      redirect_to @request
-    else
-      render 'edit'
+  end
+
+  def update
+    respond_to do |format|
+      if @request.update(request_params)
+        format.html { redirect_to @request, notice: 'RFI was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
     end
   end
 
