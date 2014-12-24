@@ -7,7 +7,7 @@ class Requests::ResponsesController < ApplicationController
     @response.user = current_user
 
     if @response.save
-      redirect_to request_path(@request)
+      redirect_to request_path(@request), notice: "Successfully posted response"
     else
       redirect_to @request, alert: "Unable to save response"
     end
