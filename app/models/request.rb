@@ -14,6 +14,9 @@ class Request < ActiveRecord::Base
   belongs_to :user
   has_many :responses
 
+  accepts_nested_attributes_for :responses
+
   validates :subject, presence: true
   validates :body, presence: true
+  #validates_associated :responses
 end

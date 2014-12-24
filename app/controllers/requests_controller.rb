@@ -7,6 +7,7 @@ class RequestsController < ApplicationController
   end
 
   def show
+    @response = Response.new
   end
 
   def new
@@ -49,6 +50,6 @@ class RequestsController < ApplicationController
     end
 
     def request_params
-      params.require(:request).permit(:subject, :body)
+      params.require(:request).permit(:subject, :body, responses_attributes: [:body])
     end
 end

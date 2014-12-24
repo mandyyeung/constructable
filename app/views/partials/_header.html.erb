@@ -21,8 +21,8 @@
             <li><%= link_to "New RFI", new_request_path %></li>
           </ul>
         </li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><%= link_to "About", static_pages_about_path %></li>
+        <li><%= link_to "Contact", static_pages_contact_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
