@@ -12,7 +12,7 @@
       <% @requests.each do |request| %>
         <tr>
           <th scope="row"><%= request.id %></th>
-          <td><%= request.subject %></td>
+          <td><%= link_to request.subject, request_path(request) %></td>
           <td><%= request.body %></td>
           <td><%= link_to "Edit", edit_request_path(request) %> |
               <%= link_to "Delete", request_path(request), method: :delete %>
