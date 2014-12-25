@@ -1,9 +1,10 @@
 class RequestsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_request, except: [:index, :new, :create]
+  helper_method :sort_column, :sort_direction
 
   def index
-    @requests = Request.all
+    @requests = Request.order(sort_column + ' ' + sort_direction)
   end
 
   def show
@@ -51,5 +52,13 @@ class RequestsController < ApplicationController
 
     def request_params
       params.require(:request).permit(:subject, :body, responses_attributes: [:body])
+    end
+
+    def sort_column
+      Request.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
     end
 end

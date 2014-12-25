@@ -11,6 +11,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'bootstrap-sass'
 gem 'local_time'
+gem 'will_paginate', '~> 3.0.6'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'
