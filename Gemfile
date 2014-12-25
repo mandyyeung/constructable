@@ -10,6 +10,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'bootstrap-sass'
+gem 'local_time'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'
