@@ -2,12 +2,12 @@
 <h3><%= @request.subject %></h3>
 <p class="text-muted">Created by <%= @request.user.email %></p>
 <p><%= @request.body %></p>
-<hr>
 <% if @request.responses.count > 0 %>
   <% @request.responses.each do |response| %>
-    <strong><%= response.user.email %></strong>
-    <p><%= response.body %></p>
-    <hr>
+    <%= div_for response do %>
+      <strong><%= response.user.email %></strong>
+      <p><%= response.body %></p>
+    <% end %>
   <% end %>
 <% end %>
 <%= render partial: "responses/form" %>

@@ -5,3 +5,13 @@ body {
 .navbar-brand {
   padding: 10px 15px;
 }
+
+.response {
+  padding: 10px 0;
+  border-top: 1px solid #ccc;
+
+  &:target {
+    background-color: #ccc;
+    padding: 10px;
+  }
+}
