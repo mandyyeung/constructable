@@ -12,6 +12,7 @@ gem 'devise'
 gem 'bootstrap-sass'
 gem 'local_time'
 gem 'will_paginate', '~> 3.0.6'
+gem 'ransack'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'

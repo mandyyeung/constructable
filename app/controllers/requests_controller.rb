@@ -4,7 +4,8 @@ class RequestsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @requests = Request.order(sort_column + ' ' + sort_direction)
+    @q = Request.search(params[:q])
+    @requests = @q.result(distinct: true).order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 5)
   end
 
   def show

@@ -16,10 +16,10 @@ body {
   }
 }
 
-a.desc:after {
+.sort > a.desc:after {
   content: " \25BC";
 }
 
-a.asc:after {
+.sort > a.asc:after {
   content: " \25B2";
 }
