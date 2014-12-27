@@ -13,6 +13,9 @@ gem 'bootstrap-sass'
 gem 'local_time'
 gem 'will_paginate', '~> 3.0.6'
 gem 'ransack'
+gem 'html-pipeline'
+gem 'github-markdown'
+gem 'sanitize'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'
@@ -23,7 +26,6 @@ group :development do
   gem 'annotate'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'meta_request'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'factory_girl_rails'

@@ -6,7 +6,7 @@
   <% @request.responses.each do |response| %>
     <%= div_for response do %>
       Posted by <strong><%= response.user.full_name %></strong> <%= local_time_ago(response.created_at) %>
-      <p><%= response.body %></p>
+      <p><%= markdownit(response.body) %></p>
     <% end %>
   <% end %>
 <% end %>

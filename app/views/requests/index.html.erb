@@ -1,36 +1,3 @@
-<%= search_form_for @q, html: {class: "form-inline"} do |f| %>
-  <%= hidden_field_tag :direction, params[:direction] %>
-  <%= hidden_field_tag :sort, params[:sort] %>
-  <%= f.search_field :subject_or_body_or_responses_body_cont, placeholder: "Search...", class: "form-control" %>
-  <%= f.submit class:"btn btn-primary" %>
-<% end %>
-
-<% if @requests.count > 0 %>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th><%= sortable "id", "#" %></th>
-        <th class="sort"><%= sortable "subject", "Subject" %></th>
-        <th class="sort"><%= sortable "body", "Description" %></th>
-        <th>Edit/Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @requests.each do |request| %>
-        <tr>
-          <th scope="row"><%= request.id %></th>
-          <td><%= link_to request.subject, request_path(request) %></td>
-          <td><%= request.body %></td>
-          <td><%= link_to "Edit", edit_request_path(request) %>/
-              <%= link_to "Delete", request_path(request), method: :delete %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <%= will_paginate @requests, class: "pull-right" %>
-<% else %>
-  <h1>No RFIs available</h1>
-<% end %>
+<div id="results"><%= render 'results' %></div>
 
 <%= link_to "New RFI", new_request_path, class:"btn btn-primary" %>
