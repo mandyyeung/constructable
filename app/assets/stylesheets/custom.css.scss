@@ -2,19 +2,36 @@ body {
   padding-top: 70px;
 }
 
+a {
+  -o-transition: color 0.5s linear;
+  -moz-transition: color 0.5s linear;
+  -webkit-transition: color 0.5s linear;
+  transition: color 0.5s linear;
+
+  &:hover {
+    color: #ccc;
+    text-decoration: none;
+  }
+}
+
 .navbar-brand {
   padding: 10px 15px;
 }
 
 .response {
-  padding: 10px 0;
+  padding: 10px;
   border-top: 1px solid #ccc;
 
   &:target {
-    background-color: #ccc;
-    padding: 10px;
+    background-color: #fd4;
   }
+
+  &:last-of-type {
+    margin-bottom: 20px;
+  }
+
 }
+
 
 .sort > a.desc:after {
   content: " \25BC";

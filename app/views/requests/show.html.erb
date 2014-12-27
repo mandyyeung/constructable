@@ -1,11 +1,17 @@
-<u>RFI #<%= @request.id %></u>
-<h3><%= @request.subject %></h3>
-<p class="text-muted">Created by <strong><%= @request.user.full_name %></strong> <%= local_time_ago(@request.created_at) %></p>
-<p><%= @request.body %></p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <strong class="panel-title">RFI #<%= @request.id %> - <%= @request.subject %></strong>
+  </div>
+  <div class="panel-body">
+    <p class="text-muted">Created by <strong><%= @request.user.full_name %></strong> <%= local_time_ago(@request.created_at) %></p>
+    <p><%= markdownit(@request.body) %></p>
+  </div>
+</div>
+
 <% if @request.responses.count > 0 %>
   <% @request.responses.each do |response| %>
     <%= div_for response do %>
-      Posted by <strong><%= response.user.full_name %></strong> <%= local_time_ago(response.created_at) %>
+      Response by <strong><%= response.user.full_name %></strong> <%= local_time_ago(response.created_at) %>
       <p><%= markdownit(response.body) %></p>
     <% end %>
   <% end %>
