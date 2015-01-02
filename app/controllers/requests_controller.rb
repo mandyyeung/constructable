@@ -6,6 +6,10 @@ class RequestsController < ApplicationController
   def index
     @q = Request.search(params[:q])
     @requests = @q.result(distinct: true).order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 20)
+    respond_to do |format|
+      format.html
+      format.csv { render text: @requests.to_csv }
+    end
   end
 
   def show
@@ -47,7 +51,7 @@ class RequestsController < ApplicationController
 
   def import
     Request.import(params[:file])
-    redirect_to root_path, notice: 'RFIs imported.'
+    redirect_to root_path, notice: 'Data was successfully imported.'
   end
 
   private

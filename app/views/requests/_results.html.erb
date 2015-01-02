@@ -18,7 +18,9 @@
           <th class="sort"><%= sortable "due", "Due" %></th>
           <th class="sort"><%= sortable "responsed", "Responded" %></th>
           <th class="sort"><%= sortable "status", "Status" %></th>
-          <th>Edit/Delete</th>
+          <% if current_user && current_user.admin? %>
+            <th>Edit/Delete</th>
+          <% end %>
         </tr>
       </thead>
       <tbody>
@@ -36,9 +38,11 @@
             <% end %>
           </td>
           <td><%= request.status %></td>
-          <td><%= link_to "Edit", edit_request_path(request) %>/
-            <%= link_to "Delete", request_path(request), method: :delete %>
-          </td>
+          <% if current_user && current_user.admin? %>
+            <td><%= link_to "Edit", edit_request_path(request) %>/
+              <%= link_to "Delete", request_path(request), method: :delete %>
+            </td>
+          <% end %>
         </tr>
         <% end %>
       </tbody>
