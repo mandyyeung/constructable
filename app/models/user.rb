@@ -19,6 +19,8 @@
 #  last_name              :string
 #  admin                  :boolean          default("false")
 #  company                :string
+#  avatar                 :string
+#  trade                  :string
 #
 # Indexes
 #

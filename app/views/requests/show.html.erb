@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-success">
   <div class="panel-heading">
     <strong class="panel-title">RFI #<%= @request.id %> - <%= @request.subject %></strong>
   </div>
@@ -9,10 +9,22 @@
 </div>
 
 <% if @request.responses.count > 0 %>
-  <% @request.responses.each do |response| %>
-    <%= div_for response do %>
+  <% @request.responses.order(primary: :desc, created_at: :desc).each do |response| %>
+    <% if response.primary? %>
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <strong class="panel-title">Primary Response</strong>
+        </div>
+        <div class="panel-body">
+          Response by <strong><%= response.user.full_name %></strong> <%= local_time_ago(response.created_at) %>
+          <p><%= markdownit(response.body) %></p>
+        </div>
+      </div>
+    <% else %>
+      <%= div_for response do %>
       Response by <strong><%= response.user.full_name %></strong> <%= local_time_ago(response.created_at) %>
       <p><%= markdownit(response.body) %></p>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>
