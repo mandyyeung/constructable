@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root to:'requests#index'
 
   resources :requests do
+    collection { post :import }
     resources :responses, module: :requests
   end
 end

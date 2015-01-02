@@ -26,4 +26,10 @@ class Request < ActiveRecord::Base
   validates :subject, presence: true
   validates :body, presence: true
   #validates_associated :responses
+
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      Request.create! row.to_hash
+    end
+  end
 end
