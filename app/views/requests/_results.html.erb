@@ -14,6 +14,10 @@
           <th><%= sortable "id", "#" %></th>
           <th class="sort"><%= sortable "subject", "Subject" %></th>
           <th class="sort"><%= sortable "user_id", "From" %></th>
+          <th class="sort"><%= sortable "to", "To" %></th>
+          <th class="sort"><%= sortable "due", "Due" %></th>
+          <th class="sort"><%= sortable "responsed", "Responded" %></th>
+          <th class="sort"><%= sortable "status", "Status" %></th>
           <th>Edit/Delete</th>
         </tr>
       </thead>
@@ -23,6 +27,15 @@
           <th scope="row"><%= request.id %></th>
           <td><%= link_to request.subject, request_path(request) %></td>
           <td><%= request.user.full_name %></td>
+          <td><%= request.to %></td>
+          <td><%= request.due.strftime("%m/%d/%Y") %></td>
+          <td>
+            <% if !!request.responses.find_by(primary: true) %>
+              <%= request.responses.find_by(primary: true).created_at.strftime("%m/%d/%Y") %>
+            <% else %>
+            <% end %>
+          </td>
+          <td><%= request.status %></td>
           <td><%= link_to "Edit", edit_request_path(request) %>/
             <%= link_to "Delete", request_path(request), method: :delete %>
           </td>
