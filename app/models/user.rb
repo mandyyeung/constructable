@@ -17,6 +17,8 @@
 #  updated_at             :datetime
 #  first_name             :string
 #  last_name              :string
+#  admin                  :boolean          default("false")
+#  company                :string
 #
 # Indexes
 #
