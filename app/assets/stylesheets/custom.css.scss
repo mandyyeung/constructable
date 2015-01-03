@@ -1,4 +1,8 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700,900);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,700);
+
 body {
+  font-family: Lato, sans-serif;
   padding-top: 70px;
 }
 
@@ -23,7 +27,7 @@ a {
   border-top: 1px solid #ccc;
 
   &:target {
-    background-color: #fd4;
+    background-color: #fff;
   }
 
   &:last-of-type {

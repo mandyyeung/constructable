@@ -26,7 +26,7 @@
       <tbody>
         <% @requests.each do |request| %>
         <tr>
-          <th scope="row"><%= request.id %></th>
+          <th scope="row" class="rfiNum"><%= request.id %></th>
           <td><%= link_to request.subject, request_path(request) %></td>
           <td><%= request.user.full_name %></td>
           <td><%= request.to %></td>

@@ -15,6 +15,7 @@
 #  priority    :string
 #  cost_impact :string
 #  trade       :string
+#  opened      :date
 #
 
 class Request < ActiveRecord::Base
