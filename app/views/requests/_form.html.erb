@@ -28,7 +28,7 @@
       </div>
       <div class="form-group">
         <%= f.label :status %>
-        <%= f.select :status, options_for_select(%w[Draft Open Closed Re-Opened Void]), {} , class: "form-control" %>
+        <%= f.select :status, options_for_select(['Draft','Open','Closed','Re-Opened','Void','Field Impact']), {} , class: "form-control" %>
       </div>
       <div class="form-group">
         <%= f.label :priority %>

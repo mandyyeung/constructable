@@ -37,7 +37,7 @@
             <% else %>
             <% end %>
           </td>
-          <td><%= request.status %></td>
+          <td><span class="label"><%= request.status %></span></td>
           <% if current_user && current_user.admin? %>
             <td><%= link_to "Edit", edit_request_path(request) %>/
               <%= link_to "Delete", request_path(request), method: :delete %>
