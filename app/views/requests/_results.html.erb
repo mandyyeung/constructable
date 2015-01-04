@@ -34,7 +34,6 @@
           <td>
             <% if !!request.responses.find_by(primary: true) %>
               <%= request.responses.find_by(primary: true).created_at.strftime("%m/%d/%Y") %>
-            <% else %>
             <% end %>
           </td>
           <td><span class="label"><%= request.status %></span></td>

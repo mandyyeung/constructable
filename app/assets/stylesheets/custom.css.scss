@@ -44,3 +44,8 @@ a {
 .sort > a.asc:after {
   content: " \25B2";
 }
+
+table.fixed {
+  table-layout: fixed;
+  word-wrap: break-word;
+}

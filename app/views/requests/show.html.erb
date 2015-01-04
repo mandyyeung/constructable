@@ -1,10 +1,35 @@
 <div class="panel panel-success">
   <div class="panel-heading">
-    <strong class="panel-title">RFI #<%= @request.id %> - <%= @request.subject %></strong>
+    <strong class="panel-title">RFI #<%= @request.id %> - <%= @request.subject %>
+      <span class="pull-right label"><%= @request.status %></span>
+    </strong>
   </div>
   <div class="panel-body">
+    <table class="table table-bordered fixed">
+      <tbody>
+        <tr>
+          <td><strong>Opened:</strong> <%= @request.opened.strftime("%m/%d/%Y") %></td>
+          <td><strong>Priority:</strong> <%= @request.priority %></td>
+        </tr>
+        <tr>
+          <td><strong>Due:</strong> <%= @request.due.strftime("%m/%d/%Y") %></td>
+          <td><strong>Potential Cost Impact:</strong> <%= @request.cost_impact %></td>
+        </tr>
+        <tr>
+          <td><strong>Responded:</strong>
+            <% if !!@request.responses.find_by(primary: true) %>
+            <%= @request.responses.find_by(primary: true).created_at.strftime("%m/%d/%Y") %>
+            <% end %>
+          </td>
+          <td><strong>Trade:</strong> <%= @request.trade %></td>
+        </tr>
+      </tbody>
+    </table>
     <p class="text-muted">Created by <strong><%= @request.user.full_name %></strong> <%= local_time_ago(@request.created_at) %></p>
-    <p><%= markdownit(@request.body) %></p>
+    <h4><u>Information Requested:</u></h4>
+    <blockquote>
+      <p><%= markdownit(@request.body) %></p>
+    </blockquote>
   </div>
 </div>
 
@@ -17,7 +42,9 @@
         </div>
         <div class="panel-body">
           Response by <strong><%= response.user.full_name %></strong> <%= local_time_ago(response.created_at) %>
-          <p><%= markdownit(response.body) %></p>
+          <blockquote>
+            <p><%= markdownit(response.body) %></p>
+          </blockquote>
         </div>
       </div>
     <% else %>
