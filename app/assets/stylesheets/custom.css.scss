@@ -36,7 +36,6 @@ a {
 
 }
 
-
 .sort > a.desc:after {
   content: " \25BC";
 }
@@ -48,4 +47,8 @@ a {
 table.fixed {
   table-layout: fixed;
   word-wrap: break-word;
+}
+
+#search {
+  margin-bottom: 1%;
 }

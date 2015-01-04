@@ -32,19 +32,19 @@
       </div>
       <div class="form-group">
         <%= f.label :status %>
-        <%= f.select :status, options_for_select(['Draft','Open','Closed','Re-Opened','Void','Field Impact']), {} , class: "form-control" %>
+        <%= f.select :status, options_for_select(['Draft','Open','Closed','Re-Opened','Void','Field Impact'], @request.status), {} , class: "form-control" %>
       </div>
       <div class="form-group">
         <%= f.label :priority %>
-        <%= f.select :priority, options_for_select(%w[High Normal]), {} , class: "form-control" %>
+        <%= f.select :priority, options_for_select(%w[High Normal], @request.priority), {} , class: "form-control" %>
       </div>
       <div class="form-group">
         <%= f.label :cost_impact %>
-        <%= f.select :cost_impact, options_for_select(%w[Increase Unknown Decrease]), {} , class: "form-control" %>
+        <%= f.select :cost_impact, options_for_select(%w[Increase Unknown Decrease], @request.cost_impact), {} , class: "form-control" %>
       </div>
       <div class="form-group">
         <%= f.label :trade %>
-        <%= f.select :trade, options_for_select(['Core & Shell', 'MEP', 'Interiors', 'Sitework']), {} , class: "form-control" %>
+        <%= f.select :trade, options_for_select(['Core & Shell', 'MEP', 'Interiors', 'Sitework'], @request.trade), {} , class: "form-control" %>
       </div>
     </div>
   </div>
