@@ -25,7 +25,15 @@
         </tr>
       </tbody>
     </table>
-    <p class="text-muted">Created by <strong><%= @request.user.full_name %></strong> <%= local_time_ago(@request.created_at) %></p>
+    <ul class="media-list">
+      <li class="media">
+        <%= image_tag('companies/'+ @request.user.avatar, class: "pull-left") %>
+        <div class="media-body">
+          <p class="text-muted">Created by <strong><%= @request.user.full_name %> (<%= @request.user.company %>)</strong> <%= local_time_ago(@request.created_at) %></p>
+          <p><< Tags will go here >></p>
+        </div>
+      </li>
+    </ul>
     <h4><u>Information Requested:</u></h4>
     <blockquote>
       <p><%= markdownit(@request.body) %></p>
@@ -51,7 +59,15 @@
           <strong class="panel-title">Primary Response</strong>
         </div>
         <div class="panel-body">
-          Response by <strong><%= response.user.full_name %></strong> <%= local_time_ago(response.created_at) %>
+          <ul class="media-list">
+            <li class="media">
+              <%= image_tag('companies/'+ @request.user.avatar, class: "pull-left") %>
+              <div class="media-body">
+                <p class="text-muted">Response by <strong><%= @request.user.full_name %> (<%= @request.user.company %>)</strong> <%= local_time_ago(@request.created_at) %></p>
+                <p><< Tags will go here?? >></p>
+              </div>
+            </li>
+          </ul>
           <blockquote>
             <p><%= markdownit(response.body) %></p>
           </blockquote>
