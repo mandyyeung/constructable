@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :import]
-  before_action :set_request, except: [:index, :new, :create, :import]
+  before_action :set_request, except: [:index, :new, :create, :import, :void]
   helper_method :sort_column, :sort_direction
 
   def index
@@ -52,6 +52,14 @@ class RequestsController < ApplicationController
   def import
     Request.import(params[:file])
     redirect_to root_path, notice: 'Data was successfully imported.'
+  end
+
+  def void
+    @request = Request.find(params[:request_id])
+    @request.update(status: "Void")
+    respond_to do |format|
+      format.html { redirect_to requests_path, notice: 'RFI was successfully voided.' }
+    end
   end
 
   private

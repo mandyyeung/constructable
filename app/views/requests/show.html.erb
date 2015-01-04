@@ -61,9 +61,9 @@
         <div class="panel-body">
           <ul class="media-list">
             <li class="media">
-              <%= image_tag('companies/'+ @request.user.avatar, class: "pull-left") %>
+              <%= image_tag('companies/'+ response.user.avatar, class: "pull-left") %>
               <div class="media-body">
-                <p class="text-muted">Response by <strong><%= @request.user.full_name %> (<%= @request.user.company %>)</strong> <%= local_time_ago(@request.created_at) %></p>
+                <p class="text-muted">Response by <strong><%= response.user.full_name %> (<%= response.user.company %>)</strong> <%= local_time_ago(response.created_at) %></p>
                 <p><< Tags will go here?? >></p>
               </div>
             </li>
@@ -75,8 +75,15 @@
       </div>
     <% else %>
       <%= div_for response do %>
-      Response by <strong><%= response.user.full_name %></strong> <%= local_time_ago(response.created_at) %>
-      <p><%= markdownit(response.body) %></p>
+      <ul class="media-list">
+        <li class="media">
+          <%= image_tag('companies/'+ response.user.avatar, class: "pull-left") %>
+          <div class="media-body">
+            <p class="text-muted">Response by <strong><%= response.user.full_name %> (<%= response.user.company %>)</strong> <%= local_time_ago(response.created_at) %></p>
+            <p><%= markdownit(response.body) %></p>
+          </div>
+        </li>
+      </ul>
       <% end %>
     <% end %>
   <% end %>
