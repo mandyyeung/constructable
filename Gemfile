@@ -17,6 +17,7 @@ gem 'ransack'
 gem 'html-pipeline'
 gem 'github-markdown'
 gem 'sanitize'
+gem 'filepicker-rails'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'

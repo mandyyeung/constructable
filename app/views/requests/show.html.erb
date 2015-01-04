@@ -30,6 +30,16 @@
     <blockquote>
       <p><%= markdownit(@request.body) %></p>
     </blockquote>
+    <h4><u>Attachments:</u></h4>
+    <% if !!@request.filepicker_url %>
+      (Right-click to download)<br/>
+      <% @uploads = @request.filepicker_url.split(',') %>
+      <% @uploads.each do |upload| %>
+        <%= link_to filepicker_image_tag(upload, w: 160, h: 160, fit: 'clip'), upload %>
+      <% end %>
+    <% else %>
+      None
+    <% end %>
   </div>
 </div>
 

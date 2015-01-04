@@ -14,6 +14,10 @@
       <div class="form-group">
         <%= f.text_area :body, placeholder: "Request", rows: 10, class:"form-control" %>
       </div>
+      <div class="form-group">
+        <%= f.label :filepicker_url, "Upload Attachments:" %>
+        <%= f.filepicker_field :filepicker_url, multiple: true %>
+      </div>
     </div>
     <div class="col-sm-3">
       <div class="form-group has-feedback">

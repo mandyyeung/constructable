@@ -2,20 +2,21 @@
 #
 # Table name: requests
 #
-#  id          :integer          not null, primary key
-#  user_id     :integer
-#  subject     :string
-#  body        :text
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  to          :string
-#  recipients  :string           default("{}"), is an Array
-#  due         :date
-#  status      :string
-#  priority    :string
-#  cost_impact :string
-#  trade       :string
-#  opened      :date
+#  id             :integer          not null, primary key
+#  user_id        :integer
+#  subject        :string
+#  body           :text
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  to             :string
+#  recipients     :string           default("{}"), is an Array
+#  due            :date
+#  status         :string
+#  priority       :string
+#  cost_impact    :string
+#  trade          :string
+#  opened         :date
+#  filepicker_url :string
 #
 
 class Request < ActiveRecord::Base
