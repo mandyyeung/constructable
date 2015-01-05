@@ -1,0 +1,78 @@
+<div>
+  <small class="pull-right">As of <%= Time.now.strftime("%m/%d/%Y %I:%M%p")%></small>
+  <h1>[Project Name] <small>RFI Dashboard</small></h1>
+</div>
+<br>
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="panel dash panel-warning">
+      <div class="panel-heading text-center">
+        <h1 class="panel-title">Overview Stats</h1>
+        </div>
+      <div class="panel-body">
+        <table class="dashTable">
+          <tr>
+            <td><span class="big"><%= @open.count %> </span></td>
+            <td><span> Open RFIs</span></td>
+          </tr>
+          <tr>
+            <td><span class="big"><%= @high_priority.count %> </span></td>
+            <td><span>&nbsp; &nbsp; &nbsp;High Priority RFIs</span></td>
+          </tr>
+          <tr>
+            <td><span class="big"><%= @overdue.count %> </span></td>
+            <td><span> Overdue RFIs</span></td>
+          </tr>
+          <tr>
+            <td><span class="big"><%= @requests.count %> </span></td>
+            <td><span> Total RFIs</span></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="panel dash panel-danger">
+      <div class="panel-heading text-center">
+        <h1 class="panel-title">Cost Impact of RFIs</h1>
+      </div>
+      <div class="panel-body">
+        <div id="donut"></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-4 text-center">
+    <div class="panel dash panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">RFIs by Trade</h3>
+      </div>
+      <div class="panel-body">
+        <div id="bar"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-8">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">RFI tracking</h3>
+      </div>
+      <div class="panel-body">
+        <%= content_tag :div, "", id: "dates-line", data: {dates: dates_line_data} %>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h3 class="panel-title">Panel title</h3>
+      </div>
+      <div class="panel-body">
+        Panel content
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= javascript_include_tag "dashboard" %>

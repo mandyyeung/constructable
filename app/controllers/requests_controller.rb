@@ -1,11 +1,11 @@
 class RequestsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show, :import]
-  before_action :set_request, except: [:index, :new, :create, :import, :void]
+  before_action :authenticate_user!, except: [:index, :show, :import, :dashboard]
+  before_action :set_request, except: [:index, :new, :create, :import, :void, :dashboard]
   helper_method :sort_column, :sort_direction
 
   def index
     @q = Request.search(params[:q])
-    @requests = @q.result(distinct: true).order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 20)
+    @requests = @q.result(distinct: true).order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 10)
     respond_to do |format|
       format.html
       format.csv { render text: @requests.to_csv }
@@ -35,7 +35,7 @@ class RequestsController < ApplicationController
   def update
     respond_to do |format|
       if @request.update(request_params)
-        format.html { redirect_to @request, notice: 'RFI was successfully updated.' }
+        format.html { redirect_to requests_path, notice: 'RFI was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -60,6 +60,13 @@ class RequestsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to requests_path, notice: 'RFI was successfully voided.' }
     end
+  end
+
+  def dashboard
+    @requests = Request.all
+    @open = Request.where("status = ? OR status = ?", "Open", "Re-Opened")
+    @overdue = @open.where("DATE(due) < ?", Date.today)
+    @high_priority = @open.where("priority = ?", "High")
   end
 
   private

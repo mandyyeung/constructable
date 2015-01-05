@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  root to:'requests#index'
+  root to:'requests#dashboard'
+
+  get 'dashboard', to: 'requests#dashboard'
 
   resources :requests do
     get 'void'

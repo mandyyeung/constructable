@@ -14,6 +14,11 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require raphael-min
+//= require morris
+//= require bootstrap-markdown
+//= require markdown
+//= require to-markdown
 //= require local_time
-//= require_tree .
+//= require custom
 //= require turbolinks

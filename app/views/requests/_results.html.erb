@@ -54,6 +54,11 @@
     </table>
   </div>
   <%= will_paginate @requests, class: "pull-right" %>
+
+  <%= link_to "New RFI", new_request_path, class:"btn btn-primary" %>
+  <%= link_to "Import", "#importCSV", class: "btn btn-info", "data-toggle" => "modal" %>
+  
 <% else %>
-  <h1>No RFIs available</h1>
+  <h1>No Results Found</h1>
+  <%= link_to "Try Again", requests_path, class:"btn btn-primary"%>
 <% end %>
