@@ -22,12 +22,13 @@
 class Request < ActiveRecord::Base
   belongs_to :user
   has_many :responses
+  has_many :comments
 
   accepts_nested_attributes_for :responses
+  accepts_nested_attributes_for :comments
 
   validates :subject, presence: true
   validates :body, presence: true
-  #validates_associated :responses
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|

@@ -39,7 +39,7 @@
       <p><%= markdownit(@request.body) %></p>
     </blockquote>
     <h4><u>Attachments:</u></h4>
-    <% if !!@request.filepicker_url %>
+    <% if @request.filepicker_url != "" %>
       (Right-click to download)<br/>
       <% @uploads = @request.filepicker_url.split(',') %>
       <% @uploads.each do |upload| %>
@@ -51,41 +51,45 @@
   </div>
 </div>
 
-<% if @request.responses.count > 0 %>
-  <% @request.responses.order(primary: :desc, created_at: :desc).each do |response| %>
-    <% if response.primary? %>
-      <div class="panel panel-info">
-        <div class="panel-heading">
-          <strong class="panel-title">Primary Response</strong>
-        </div>
-        <div class="panel-body">
-          <ul class="media-list">
-            <li class="media">
-              <%= image_tag('companies/'+ response.user.avatar, class: "pull-left") %>
-              <div class="media-body">
-                <p class="text-muted">Response by <strong><%= response.user.full_name %> (<%= response.user.company %>)</strong> <%= local_time_ago(response.created_at) %></p>
-                <p><< Tags will go here?? >></p>
-              </div>
-            </li>
-          </ul>
-          <blockquote>
-            <p><%= markdownit(response.body) %></p>
-          </blockquote>
-        </div>
+<% if @request.responses %>
+  <% @request.responses.each do |response| %>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <strong class="panel-title">Primary Response</strong>
       </div>
-    <% else %>
-      <%= div_for response do %>
+      <div class="panel-body">
+        <ul class="media-list">
+          <li class="media">
+            <%= image_tag('companies/'+ response.user.avatar, class: "pull-left") %>
+            <div class="media-body">
+              <p class="text-muted">Response by <strong><%= response.user.full_name %> (<%= response.user.company %>)</strong> <%= local_time_ago(response.created_at) %></p>
+              <p><< Tags will go here?? >></p>
+            </div>
+          </li>
+        </ul>
+        <blockquote>
+          <p><%= markdownit(response.body) %></p>
+        </blockquote>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<h3>Comments</h3>
+<% if @request.comments %>
+  <% @request.comments.each do |comment| %>
+    <%= div_for comment do %>
       <ul class="media-list">
         <li class="media">
-          <%= image_tag('companies/'+ response.user.avatar, class: "pull-left") %>
+          <%= image_tag('companies/'+ comment.user.avatar, class: "pull-left") %>
           <div class="media-body">
-            <p class="text-muted">Response by <strong><%= response.user.full_name %> (<%= response.user.company %>)</strong> <%= local_time_ago(response.created_at) %></p>
-            <p><%= markdownit(response.body) %></p>
+            <p class="text-muted">Response by <strong><%= comment.user.full_name %> (<%= comment.user.company %>)</strong> <%= local_time_ago(comment.created_at) %></p>
+            <p><%= markdownit(comment.body) %></p>
           </div>
         </li>
       </ul>
-      <% end %>
     <% end %>
   <% end %>
 <% end %>
-<%= render partial: "responses/form" %>
+
+<%= render "comments/form" %>

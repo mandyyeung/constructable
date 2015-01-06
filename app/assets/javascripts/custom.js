@@ -31,4 +31,6 @@ $(document).ready(function(){
     }
   });
 
+  $('.comment').last().addClass('bottom');
+  
 });

@@ -22,18 +22,18 @@ a {
   padding: 10px 15px;
 }
 
-.response {
-  padding: 10px;
-  border-top: 1px solid #ccc;
+.comment {
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
 
   &:target {
     background-color: #fff;
   }
 
-  &:last-of-type {
-    margin-bottom: 20px;
-  }
+}
 
+.bottom {
+  margin-bottom: 30px;
 }
 
 .sort > a.desc:after {

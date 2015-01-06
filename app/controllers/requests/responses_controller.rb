@@ -7,9 +7,22 @@ class Requests::ResponsesController < ApplicationController
     @response.user = current_user
 
     if @response.save
-      redirect_to request_path(@request, anchor: "response_#{@response.id}")
+      redirect_to request_path(@request)
     else
       redirect_to @request, alert: "Unable to save response"
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    respond_to do |format|
+      if @response.update(response_params)
+        format.html { redirect_to @request, notice: 'Response was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
     end
   end
 
@@ -20,6 +33,6 @@ class Requests::ResponsesController < ApplicationController
     end
 
     def response_params
-      params.require(:response).permit(:body, :primary)
+      params.require(:response).permit(:body)
     end
 end

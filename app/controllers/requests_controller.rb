@@ -14,6 +14,7 @@ class RequestsController < ApplicationController
 
   def show
     @response = Response.new
+    @comment = Comment.new
   end
 
   def new
@@ -76,7 +77,7 @@ class RequestsController < ApplicationController
     end
 
     def request_params
-      params.require(:request).permit(:subject, :body, :to, :recipients, :due, :status, :priority, :cost_impact, :trade, :opened, :filepicker_url, responses_attributes: [:body, :primary])
+      params.require(:request).permit(:subject, :body, :to, :recipients, :due, :status, :priority, :cost_impact, :trade, :opened, :filepicker_url, responses_attributes: [:body], comments_attributes: [:body])
     end
 
     def sort_column

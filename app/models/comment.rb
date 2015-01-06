@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: responses
+# Table name: comments
 #
 #  id         :integer          not null, primary key
 #  request_id :integer
@@ -10,7 +10,7 @@
 #  updated_at :datetime         not null
 #
 
-class Response < ActiveRecord::Base
+class Comment < ActiveRecord::Base
   belongs_to :request
   belongs_to :user
 

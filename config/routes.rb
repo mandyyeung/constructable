@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   resources :requests do
     get 'void'
     collection { post :import }
-    resources :responses, module: :requests
+    resources :responses, module: :requests, only: [:create, :edit, :update]
+    resources :comments, module: :requests, only: [:create]
   end
 
 end
