@@ -37,7 +37,7 @@
         <h1 class="panel-title">Cost Impact of RFIs</h1>
       </div>
       <div class="panel-body">
-        <div id="donut"></div>
+        <%= content_tag :div, "", id: "cost_donut", data: {costs: cost_donut_data}%>
       </div>
     </div>
   </div>
@@ -47,7 +47,7 @@
         <h3 class="panel-title">RFIs by Trade</h3>
       </div>
       <div class="panel-body">
-        <div id="bar"></div>
+        <%= content_tag :div, "", id: "trade_bar", data: {trades: trade_bar_data}%>
       </div>
     </div>
   </div>
@@ -59,7 +59,7 @@
         <h3 class="panel-title">RFI tracking</h3>
       </div>
       <div class="panel-body">
-        <%= content_tag :div, "", id: "dates-line", data: {dates: dates_line_data} %>
+        <%= content_tag :div, "", id: "dates_line", data: {dates: dates_line_data} %>
       </div>
     </div>
   </div>
