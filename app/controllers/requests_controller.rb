@@ -77,7 +77,7 @@ class RequestsController < ApplicationController
     end
 
     def request_params
-      params.require(:request).permit(:subject, :body, :to, :recipients, :due, :status, :priority, :cost_impact, :trade, :opened, :filepicker_url, responses_attributes: [:body], comments_attributes: [:body])
+      params.require(:request).permit(:subject, :body, :to, :recipients, :due, :status, :priority, :cost_impact, :trade, :opened, :filepicker_url, responses_attributes: [:body, :opened], comments_attributes: [:body])
     end
 
     def sort_column

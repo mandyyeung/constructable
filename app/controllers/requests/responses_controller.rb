@@ -33,6 +33,6 @@ class Requests::ResponsesController < ApplicationController
     end
 
     def response_params
-      params.require(:response).permit(:body)
+      params.require(:response).permit(:body, :opened)
     end
 end

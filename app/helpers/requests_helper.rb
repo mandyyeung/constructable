@@ -1,11 +1,6 @@
 module RequestsHelper
   def dates_line_data
-    @requests.each do |request|
-      {
-        created_at: request.created_at,
-        id: request.id
-      }
-    end
+    #will come back to this
   end
 
   def cost_donut_data

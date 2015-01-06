@@ -17,8 +17,8 @@
         </tr>
         <tr>
           <td><strong>Responded:</strong>
-            <% if !!@request.responses.find_by(primary: true) %>
-            <%= @request.responses.find_by(primary: true).created_at.strftime("%m/%d/%Y") %>
+            <% if !!@request.responses.first.try(:opened) %>
+              <%= @request.responses.first.opened.strftime("%m/%d/%Y") %>
             <% end %>
           </td>
           <td><strong>Trade:</strong> <%= @request.trade %></td>

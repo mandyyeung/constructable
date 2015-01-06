@@ -25,11 +25,22 @@ Morris.Bar({
 
 Morris.Line({
   element: 'dates_line',
-  data: $('#dates_line').data('dates'),
+  data:
+  // $('#dates_line').data('dates'),
+  [
+    { x: '2015-01-10', y1: 10, y2: 9, y3: 7 },
+    { x: '2015-01-11', y1: 5,  y2: 6, y3: 8 },
+    { x: '2015-01-12', y1: 1,  y2: 4, y3: 7 },
+    { x: '2015-01-13', y1: 7,  y2: 2, y3: 3 },
+    { x: '2015-01-14', y1: 5,  y2: 4, y3: 6 },
+    { x: '2015-01-15', y1: 6,  y2: 5, y3: 8 },
+    { x: '2015-01-16', y1: 7, y2: 5, y3: 10 }
+  ],
   xkey: 'x',
-  ykeys: ['y'],
-  labels: ['# of RFIs'],
+  ykeys: ['y1', 'y2', 'y3'],
+  labels: ['Open', 'Due', 'Responded'],
   hideHover: 'auto',
   behaveLikeLine: true,
-  resize: true
+  resize: true,
+  xLabelAngle: 60
 });
