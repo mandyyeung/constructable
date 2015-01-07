@@ -20,5 +20,6 @@
 //= require markdown
 //= require to-markdown
 //= require local_time
+//= require select2
 //= require custom
 //= require turbolinks
