@@ -26,6 +26,10 @@
         <%= f.text_area :body, placeholder: "Request", rows: 10, class:"form-control" %>
       </div>
       <div class="form-group">
+        <%= f.label :tag_list, "Tags" %>
+        <%= f.text_field :tag_list, placeholder: "Tags (separate with commas)", class:"form-control" %>
+      </div>
+      <div class="form-group">
         <%= f.label :filepicker_url, "Upload Attachments:" %>
         <%= f.filepicker_field :filepicker_url, multiple: true %>
       </div>

@@ -27,6 +27,8 @@ class Request < ActiveRecord::Base
   accepts_nested_attributes_for :responses
   accepts_nested_attributes_for :comments
 
+  acts_as_taggable
+
   validates :subject, presence: true
   validates :body, presence: true
 

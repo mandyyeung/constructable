@@ -37,7 +37,6 @@
             <% end %>
             <%= @request.users.try(:last).try(:full_name) %>
           </p>
-          <p><< Tags will go here >></p>
         </div>
       </li>
     </ul>
@@ -56,6 +55,10 @@
     <% else %>
       None
     <% end %>
+  </div>
+  <div class="panel-footer">
+    <strong>Tags</strong> <span class="badge"><%= @request.tag_list.count %> </span>
+    <%= raw @request.tag_list.map { |t| link_to t, '#' }.join(', ') %>
   </div>
 </div>
 
