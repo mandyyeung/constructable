@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show, :import, :dashboard]
-  before_action :set_request, except: [:index, :new, :create, :import, :void, :dashboard]
+  before_action :authenticate_user!, except: [:index, :show, :import, :dashboard, :search]
+  before_action :set_request, only: [:show, :edit, :update]
   helper_method :sort_column, :sort_direction
 
   def index
@@ -73,6 +73,11 @@ class RequestsController < ApplicationController
     @open = Request.where("status = ? OR status = ?", "Open", "Re-Opened")
     @overdue = @open.where("DATE(due) < ?", Date.today)
     @high_priority = @open.where("priority = ?", "High")
+  end
+
+  def search
+    index
+    render :index
   end
 
   private

@@ -32,5 +32,17 @@ $(document).ready(function(){
   });
 
   $('.comment').last().addClass('bottom');
-  
+
+  function toggle(value){
+    return value ? 'addClass':'removeClass';
+  }
+
+  $(document).on('input', '.clearable', function() {
+    $(this)[toggle(this.value)]('x');
+  }).on('mousemove', '.x', function(e) {
+    $(this)[toggle(this.offsetWidth-28 < e.clientX-this.getBoundingClientRect().left)]('onX');
+  }).on('click', '.onX', function(){
+    $(this).removeClass('x onX').val('').change();
+  });
+
 });

@@ -4,7 +4,7 @@
       <div class="input-group">
         <%= hidden_field_tag :direction, params[:direction] %>
         <%= hidden_field_tag :sort, params[:sort] %>
-        <%= f.search_field :subject_or_body_or_responses_body_cont, placeholder: "Search...", class: "form-control" %>
+        <%= f.search_field :subject_or_body_or_responses_body_cont, placeholder: "Search...", class: "form-control clearable" %>
         <span class="input-group-btn">
           <%= button_tag(type: 'submit', class: 'btn btn-default') do %>
             <span class="glyphicon glyphicon-search"></span>

@@ -9,7 +9,10 @@ Rails.application.routes.draw do
 
   resources :requests do
     get 'void'
-    collection { post :import }
+    collection do
+      post :import
+      match 'search' => 'requests#search', via: [:get, :post], as: :search
+    end
     resources :responses, module: :requests, only: [:create, :edit, :update]
     resources :comments, module: :requests, only: [:create]
   end
