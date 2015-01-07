@@ -27,9 +27,16 @@
     </table>
     <ul class="media-list">
       <li class="media">
-        <%= image_tag('companies/'+ @request.user.avatar, class: "pull-left") %>
+        <%= image_tag('companies/'+ @request_user.avatar, class: "pull-left") %>
         <div class="media-body">
-          <p class="text-muted">Created by <strong><%= @request.user.full_name %> (<%= @request.user.company %>)</strong> <%= local_time_ago(@request.created_at) %></p>
+          <p class="text-muted">Created by <strong><%= @request_user.full_name %> (<%= @request_user.company %>)</strong> <%= local_time_ago(@request.updated_at) %></p>
+          <p>
+            <strong>CC: </strong>
+            <% @request.users[0...-1].each do |user| %>
+              <%= user.full_name %>,
+            <% end %>
+            <%= @request.users.last.full_name %>
+          </p>
           <p><< Tags will go here >></p>
         </div>
       </li>
@@ -38,6 +45,7 @@
     <blockquote>
       <p><%= markdownit(@request.body) %></p>
     </blockquote>
+
     <h4><u>Attachments:</u></h4>
     <% if @request.filepicker_url != "" %>
       (Right-click to download)<br/>

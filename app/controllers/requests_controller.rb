@@ -15,6 +15,7 @@ class RequestsController < ApplicationController
   def show
     @response = Response.new
     @comment = Comment.new
+    @request_user = User.first
   end
 
   def new
@@ -23,6 +24,8 @@ class RequestsController < ApplicationController
 
   def create
     @request = current_user.requests.new(request_params)
+    @users = params[:request][:user_ids].reject{|e| e == ""}
+    @request.users << User.find(@users)
     if @request.save
       redirect_to requests_path
     else
@@ -34,6 +37,8 @@ class RequestsController < ApplicationController
   end
 
   def update
+    @users = params[:request][:user_ids].reject{|e| e == ""}
+    @request.users << User.find(@users)
     respond_to do |format|
       if @request.update(request_params)
         format.html { redirect_to requests_path, notice: 'RFI was successfully updated.' }
@@ -77,7 +82,7 @@ class RequestsController < ApplicationController
     end
 
     def request_params
-      params.require(:request).permit(:subject, :body, :to, :recipients, :due, :status, :priority, :cost_impact, :trade, :opened, :filepicker_url, responses_attributes: [:body, :opened], comments_attributes: [:body])
+      params.require(:request).permit(:subject, :body, :to, :due, :status, :priority, :cost_impact, :trade, :opened, :filepicker_url, :from, :user_ids, responses_attributes: [:body, :opened], comments_attributes: [:body])
     end
 
     def sort_column

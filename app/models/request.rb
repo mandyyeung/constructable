@@ -3,13 +3,11 @@
 # Table name: requests
 #
 #  id             :integer          not null, primary key
-#  user_id        :integer
 #  subject        :string
 #  body           :text
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  to             :string
-#  recipients     :string           default("{}"), is an Array
 #  due            :date
 #  status         :string
 #  priority       :string
@@ -17,12 +15,14 @@
 #  trade          :string
 #  opened         :date
 #  filepicker_url :string
+#  from           :string
 #
 
 class Request < ActiveRecord::Base
-  belongs_to :user
   has_many :responses
   has_many :comments
+  has_many :recipients
+  has_many :users, through: :recipients
 
   accepts_nested_attributes_for :responses
   accepts_nested_attributes_for :comments

@@ -37,6 +37,8 @@ class User < ActiveRecord::Base
   has_many :requests
   has_many :responses
   has_many :comments
+  has_many :recipients
+  has_many :requests, through: :recipients
 
   def full_name
     "#{first_name} #{last_name}"

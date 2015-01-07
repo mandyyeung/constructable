@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150106034439) do
+ActiveRecord::Schema.define(version: 20150107005328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,14 +24,22 @@ ActiveRecord::Schema.define(version: 20150106034439) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "requests", force: :cascade do |t|
+  create_table "recipients", force: :cascade do |t|
+    t.integer  "request_id"
     t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "recipients", ["request_id"], name: "index_recipients_on_request_id", using: :btree
+  add_index "recipients", ["user_id"], name: "index_recipients_on_user_id", using: :btree
+
+  create_table "requests", force: :cascade do |t|
     t.string   "subject"
     t.text     "body"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.string   "to"
-    t.string   "recipients",     default: [],              array: true
     t.date     "due"
     t.string   "status"
     t.string   "priority"
@@ -39,6 +47,7 @@ ActiveRecord::Schema.define(version: 20150106034439) do
     t.string   "trade"
     t.date     "opened"
     t.string   "filepicker_url"
+    t.string   "from"
   end
 
   create_table "responses", force: :cascade do |t|
