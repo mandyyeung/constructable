@@ -35,7 +35,7 @@
             <% @request.users[0...-1].each do |user| %>
               <%= user.full_name %>,
             <% end %>
-            <%= @request.users.last.full_name %>
+            <%= @request.users.try(:last).try(:full_name) %>
           </p>
           <p><< Tags will go here >></p>
         </div>

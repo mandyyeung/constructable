@@ -5,6 +5,6 @@ $(document).ready(function() {
   });
 
   $('#cc-field').select2({
-    placeholder: 'Select a team mate to copy'
+    placeholder: 'Select team members to copy'
   });
 });
