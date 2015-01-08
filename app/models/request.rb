@@ -27,6 +27,8 @@ class Request < ActiveRecord::Base
   accepts_nested_attributes_for :responses
   accepts_nested_attributes_for :comments
 
+  after_initialize :set_dates
+
   acts_as_taggable
 
   validates :subject, presence: true
@@ -47,5 +49,10 @@ class Request < ActiveRecord::Base
         csv << request.attributes.values_at(*column_names)
       end
     end
+  end
+
+  def set_dates
+    self.opened ||= Date.today if self.new_record?
+    self.due ||= (Date.today + 14) if self.new_record?
   end
 end

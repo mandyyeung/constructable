@@ -25,6 +25,7 @@ class RequestsController < ApplicationController
 
   def create
     @request = current_user.requests.new(request_params)
+    @request.from = params[:request][:from] || current_user.full_name
     @users = params[:request][:user_ids].reject{|e| e == ""}
     @request.users << User.find(@users)
     if @request.save
@@ -43,7 +44,7 @@ class RequestsController < ApplicationController
     @request.users << User.find(@users)
     respond_to do |format|
       if @request.update(request_params)
-        format.html { redirect_to requests_path, notice: 'RFI was successfully updated.' }
+        format.html { redirect_to @request, notice: 'RFI was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -102,7 +103,7 @@ class RequestsController < ApplicationController
     end
 
     def requires_permission
-      if current_user.full_name != @request.from || !current_user.admin?
+      unless current_user.full_name == @request.from || current_user.admin?
         redirect_to requests_path, alert: 'Oops, you do not have permission to edit this request!'
       end
     end

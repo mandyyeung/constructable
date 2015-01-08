@@ -1,90 +1,97 @@
 <div class="panel panel-success">
-  <div class="panel-heading">
-    <strong class="panel-title">RFI #<%= @request.id %> - <%= @request.subject %>
-      <span class="pull-right label"><%= @request.status %></span>
-    </strong>
-  </div>
-  <div class="panel-body">
-    <table class="table table-bordered fixed">
-      <tbody>
-        <tr>
-          <td><strong>Opened:</strong> <%= @request.opened.strftime("%m/%d/%Y") %></td>
-          <td><strong>Priority:</strong> <%= @request.priority %></td>
-        </tr>
-        <tr>
-          <td><strong>Due:</strong> <%= @request.due.strftime("%m/%d/%Y") %></td>
-          <td><strong>Potential Cost Impact:</strong> <%= @request.cost_impact %></td>
-        </tr>
-        <tr>
-          <td><strong>Responded:</strong>
-            <% if !!@request.responses.first.try(:opened) %>
-              <%= @request.responses.first.opened.strftime("%m/%d/%Y") %>
-            <% end %>
-          </td>
-          <td><strong>Trade:</strong> <%= @request.trade %></td>
-        </tr>
-      </tbody>
-    </table>
-    <ul class="media-list">
-      <li class="media">
-        <%= image_tag('http://placehold.it/64x64', class: "pull-left") %>
-        <div class="media-body">
-          <p class="text-muted">Created by <strong><%= @request_user.full_name %> (<%= @request_user.company %>)</strong> <%= local_time_ago(@request.updated_at) %></p>
-          <p>
-            <strong>CC: </strong>
-            <% @request.users[0...-1].each do |user| %>
-              <%= user.full_name %>,
-            <% end %>
-            <%= @request.users.try(:last).try(:full_name) %>
-          </p>
-        </div>
-      </li>
-    </ul>
-    <h4><u>Information Requested:</u></h4>
-    <blockquote>
-      <p><%= markdownit(@request.body) %></p>
-    </blockquote>
-
-    <h4><u>Attachments:</u></h4>
-    <% if @request.filepicker_url != "" %>
-      (Right-click to download)<br/>
-      <% @uploads = @request.filepicker_url.split(',') %>
-      <% @uploads.each do |upload| %>
-        <%= link_to filepicker_image_tag(upload, w: 160, h: 160, fit: 'clip'), upload %>
-      <% end %>
-    <% else %>
-      None
-    <% end %>
-  </div>
-  <div class="panel-footer">
-    <strong>Tags</strong> <span class="badge"><%= @request.tag_list.count %> </span>
-    <%= raw @request.tag_list.map { |t| link_to t, '#' }.join(', ') %>
-  </div>
-</div>
-
-<% if @request.responses %>
-  <% @request.responses.each do |response| %>
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <strong class="panel-title">Primary Response</strong>
-      </div>
-      <div class="panel-body">
-        <ul class="media-list">
-          <li class="media">
-            <%= image_tag('companies/'+ response.user.avatar, class: "pull-left") %>
-            <div class="media-body">
-              <p class="text-muted">Response by <strong><%= response.user.full_name %> (<%= response.user.company %>)</strong> <%= local_time_ago(response.created_at) %></p>
-              <p><< Tags will go here?? >></p>
-            </div>
-          </li>
-        </ul>
-        <blockquote>
-          <p><%= markdownit(response.body) %></p>
-        </blockquote>
-      </div>
-    </div>
+  <% if current_user.full_name == @request.from || current_user.admin? %>
+    <div class="panel-heading title">
+  <% else %>
+    <div class="panel-heading">
   <% end %>
-<% end %>
+      <strong class="panel-title">RFI #<%= @request.id %> - <%= @request.subject %> -
+        <span class="pull-right label"><%= @request.status %></span>
+      </strong>
+      <span class="admin">
+         <%= link_to "Edit", edit_request_path %> | <%= link_to "Void", request_void_path(request) %>
+      </span>
+    </div>
+    <div class="panel-body">
+      <table class="table table-bordered fixed">
+        <tbody>
+          <tr>
+            <td><strong>Opened:</strong> <%= @request.opened.strftime("%m/%d/%Y") %></td>
+            <td><strong>Priority:</strong> <%= @request.priority %></td>
+          </tr>
+          <tr>
+            <td><strong>Due:</strong> <%= @request.due.strftime("%m/%d/%Y") %></td>
+            <td><strong>Potential Cost Impact:</strong> <%= @request.cost_impact %></td>
+          </tr>
+          <tr>
+            <td><strong>Responded:</strong>
+              <% if !!@request.responses.first.try(:opened) %>
+                <%= @request.responses.first.opened.strftime("%m/%d/%Y") %>
+              <% end %>
+            </td>
+            <td><strong>Trade:</strong> <%= @request.trade %></td>
+          </tr>
+        </tbody>
+      </table>
+      <ul class="media-list">
+        <li class="media">
+          <%= image_tag('http://placehold.it/64x64', class: "pull-left") %>
+          <div class="media-body">
+            <p class="text-muted">Created by <strong><%= @request_user.full_name %> (<%= @request_user.company %>)</strong> <%= local_time_ago(@request.updated_at) %></p>
+            <p>
+              <strong>CC: </strong>
+              <% @request.users[0...-1].each do |user| %>
+                <%= user.full_name %>,
+              <% end %>
+              <%= @request.users.try(:last).try(:full_name) %>
+            </p>
+          </div>
+        </li>
+      </ul>
+      <h4><u>Information Requested:</u></h4>
+      <blockquote>
+        <p><%= markdownit(@request.body) %></p>
+      </blockquote>
+
+      <h4><u>Attachments:</u></h4>
+      <% if @request.filepicker_url != "" %>
+        (Right-click to download)<br/>
+        <% @uploads = @request.filepicker_url.split(',') %>
+        <% @uploads.each do |upload| %>
+          <%= link_to filepicker_image_tag(upload, w: 160, h: 160, fit: 'clip'), upload %>
+        <% end %>
+      <% else %>
+        None
+      <% end %>
+    </div>
+    <div class="panel-footer">
+      <strong>Tags</strong> <span class="badge"><%= @request.tag_list.count %> </span>
+      <%= raw @request.tag_list.map { |t| link_to t, '#' }.join(', ') %>
+    </div>
+  </div>
+
+  <% if @request.responses %>
+    <% @request.responses.each do |response| %>
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <strong class="panel-title">Primary Response</strong>
+        </div>
+        <div class="panel-body">
+          <ul class="media-list">
+            <li class="media">
+              <%= image_tag('companies/'+ response.user.avatar, class: "pull-left") %>
+              <div class="media-body">
+                <p class="text-muted">Response by <strong><%= response.user.full_name %> (<%= response.user.company %>)</strong> <%= local_time_ago(response.created_at) %></p>
+                <p><< Tags will go here?? >></p>
+              </div>
+            </li>
+          </ul>
+          <blockquote>
+            <p><%= markdownit(response.body) %></p>
+          </blockquote>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 
 <h3>Comments</h3>
 <% if @request.comments %>

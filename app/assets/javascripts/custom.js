@@ -31,7 +31,12 @@ $(document).ready(function(){
     }
   });
 
+  // formatting comments
+
   $('.comment').last().addClass('bottom');
+
+
+  // search box clear method
 
   function toggle(value){
     return value ? 'addClass':'removeClass';
@@ -44,5 +49,11 @@ $(document).ready(function(){
   }).on('click', '.onX', function(){
     $(this).removeClass('x onX').val('').change();
   });
+
+  // admin links on hover
+
+  $('.title').hover(function(){
+    $(this).toggleClass('hover');
+  })
 
 });

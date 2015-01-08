@@ -98,3 +98,12 @@ text {
 .css2 { font-size: 1.2em; }
 .css3 { font-size: 1.4em; }
 .css4 { font-size: 1.6em; }
+
+/* Admin Edit and Void links */
+.title .admin, .admin {
+  display: none;
+}
+
+.title.hover .admin {
+  display: inline;
+}
