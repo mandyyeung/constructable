@@ -1,6 +1,7 @@
 class RequestsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :import, :dashboard, :search]
   before_action :set_request, only: [:show, :edit, :update]
+  before_action :requires_permission, only: [:edit, :update]
   helper_method :sort_column, :sort_direction
 
   def index
@@ -98,5 +99,11 @@ class RequestsController < ApplicationController
 
     def sort_direction
       %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
+    end
+
+    def requires_permission
+      if current_user.full_name != @request.from || !current_user.admin?
+        redirect_to requests_path, alert: 'Oops, you do not have permission to edit this request!'
+      end
     end
 end
