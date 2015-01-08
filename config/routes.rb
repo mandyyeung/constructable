@@ -17,4 +17,6 @@ Rails.application.routes.draw do
     resources :comments, module: :requests, only: [:create]
   end
 
+  resources :tags, only: [:show]
+
 end

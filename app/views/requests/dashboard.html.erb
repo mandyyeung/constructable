@@ -1,6 +1,6 @@
 <div>
   <small class="pull-right">As of <%= Time.now.strftime("%m/%d/%Y %I:%M%p")%></small>
-  <h1>[Project Name] <small>RFI Dashboard</small></h1>
+  <h1>Constructable HQ Project <small>RFI Dashboard</small></h1>
 </div>
 <br>
 <div class="row">
@@ -66,10 +66,12 @@
   <div class="col-sm-4">
     <div class="panel panel-success">
       <div class="panel-heading">
-        <h3 class="panel-title">Panel title</h3>
+        <h3 class="panel-title">RFI Tag Cloud</h3>
       </div>
       <div class="panel-body">
-        Panel content
+        <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+          <%= link_to tag.name, tag_path(tag), :class => css_class %>
+        <% end %>
       </div>
     </div>
   </div>

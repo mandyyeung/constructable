@@ -1,4 +1,6 @@
 module RequestsHelper
+  include ActsAsTaggableOn::TagsHelper
+  
   def dates_line_data
     #will come back to this
   end

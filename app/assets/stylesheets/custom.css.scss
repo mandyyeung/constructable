@@ -49,9 +49,7 @@ table.fixed {
   word-wrap: break-word;
 }
 
-.search {
-  margin-bottom: 1%;
-}
+/* Dashboard */
 
 .dash .panel-title {
   font-size: 24px;
@@ -81,9 +79,22 @@ text {
   font-family: Lato !important;
 }
 
+/* Search bar */
+
+.search {
+  margin-bottom: 1%;
+}
+
 .clearable{
   background: #fff url(icoX.gif) no-repeat right -20px center;
   transition: background 0.5s;
 }
 .clearable.x  { background-position: right 15px center; }
 .clearable.onX{ cursor: pointer; }
+
+/* Tag Cloud */
+
+.css1 { font-size: 1.0em; }
+.css2 { font-size: 1.2em; }
+.css3 { font-size: 1.4em; }
+.css4 { font-size: 1.6em; }

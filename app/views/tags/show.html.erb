@@ -1,0 +1,41 @@
+<h1>RFIs tagged with "<%= @tag.name %>"</h1>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Subject</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Due</th>
+        <th>Responded</th>
+        <th>Status</th>
+        <% if current_user && current_user.admin? %>
+          <th>Edit/Void</th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tagged_requests.each do |request| %>
+      <tr>
+        <th scope="row" class="rfiNum"><%= request.id %></th>
+        <td><%= link_to truncate(request.subject, length: 50), request_path(request) %></td>
+        <td><%= request.from %></td>
+        <td><%= request.to %></td>
+        <td><%= request.due.strftime("%m/%d/%Y") %></td>
+        <td>
+          <% if request.responses.first %>
+          <%= request.responses.first.created_at.strftime("%m/%d/%Y") %>
+          <% end %>
+        </td>
+        <td><span class="label"><%= request.status %></span></td>
+        <% if current_user && current_user.admin? %>
+        <td><%= link_to "Edit", edit_request_path(request) %>/
+          <%= link_to "Void", request_void_path(request) %>
+        </td>
+        <% end %>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

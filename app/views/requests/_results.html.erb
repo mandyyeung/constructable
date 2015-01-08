@@ -42,7 +42,7 @@
         <% @requests.each do |request| %>
         <tr>
           <th scope="row" class="rfiNum"><%= request.id %></th>
-          <td><%= link_to request.subject, request_path(request) %></td>
+          <td><%= link_to truncate(request.subject, length: 50), request_path(request) %></td>
           <td><%= request.from %></td>
           <td><%= request.to %></td>
           <td><%= request.due.strftime("%m/%d/%Y") %></td>

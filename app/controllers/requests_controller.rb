@@ -37,6 +37,7 @@ class RequestsController < ApplicationController
   end
 
   def update
+    @request.users.clear
     @users = params[:request][:user_ids].reject{|e| e == ""}
     @request.users << User.find(@users)
     respond_to do |format|
@@ -73,6 +74,7 @@ class RequestsController < ApplicationController
     @open = Request.where("status = ? OR status = ?", "Open", "Re-Opened")
     @overdue = @open.where("DATE(due) < ?", Date.today)
     @high_priority = @open.where("priority = ?", "High")
+    @tags = Request.tag_counts_on(:tags)
   end
 
   def search
