@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'static_pages/about'
+  get 'about', to: 'static_pages#about'
 
   devise_for :users
 
