@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show, :import, :dashboard, :search]
+  before_action :authenticate_user!, except: [:index, :import, :dashboard, :search]
   before_action :set_request, only: [:show, :edit, :update]
   before_action :requires_permission, only: [:edit, :update]
   helper_method :sort_column, :sort_direction
@@ -25,7 +25,6 @@ class RequestsController < ApplicationController
 
   def create
     @request = current_user.requests.new(request_params)
-    @request.from = params[:request][:from] || current_user.full_name
     @users = params[:request][:user_ids].reject{|e| e == ""}
     @request.users << User.find(@users)
     if @request.save

@@ -19,4 +19,8 @@ Rails.application.routes.draw do
 
   resources :tags, only: [:show]
 
+  %w( 404 422 500 ).each do |code|
+    get code, to: 'errors#show', code: code
+  end
+
 end
