@@ -4,8 +4,7 @@ Morris.Donut({
   element: 'cost_donut',
   data: $('#cost_donut').data('costs'),
   resize: true,
-  hideHover: 'auto',
-  colors: ["#933B39","#C05F5D","#D18B89"]
+  colors: ["#801515","#A8231E","#D46A6A","#FFAAAA"]
 });
 
 // Dashboard bar
