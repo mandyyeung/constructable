@@ -9,7 +9,7 @@
         <div class="col-sm-6 col-md-6">
           <div class="form-group">
             <%= f.label :to %>
-            <%= f.collection_select(:to, User.all, :full_name, :full_name, {prompt: "Select"}, {class: "form-control", id: "to-field"}) %>
+            <%= f.collection_select(:to, User.order(:category), :full_name, :full_name, {prompt: "Select"}, {class: "form-control", id: "to-field"}) %>
           </div>
         </div>
         <div class="col-sm-6 col-md-6">
