@@ -16,7 +16,7 @@ class RequestsController < ApplicationController
   def show
     @response = Response.new
     @comment = Comment.new
-    name = @request.from.split
+    name = @request.from.split # will fix this in a future feature
     @request_user = User.where(["first_name = ? and last_name = ?", name.first, name.last]).first
   end
 
