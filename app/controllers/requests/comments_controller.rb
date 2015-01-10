@@ -7,6 +7,7 @@ class Requests::CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
+      @comment.create_activity :create, owner: current_user
       redirect_to request_path(@request, anchor: "comment_#{@comment.id}")
     else
       redirect_to @request, alert: "Unable to save comment"

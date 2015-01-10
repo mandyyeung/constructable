@@ -23,4 +23,6 @@ Rails.application.routes.draw do
     get code, to: 'errors#show', code: code
   end
 
+  resources :activities, only: [:index]
+
 end

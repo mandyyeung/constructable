@@ -7,6 +7,7 @@ class Requests::ResponsesController < ApplicationController
     @response.user = current_user
 
     if @response.save
+      @response.create_activity :create, owner: current_user
       redirect_to request_path(@request)
     else
       redirect_to @request, alert: "Unable to save response"

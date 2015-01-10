@@ -28,6 +28,7 @@ class RequestsController < ApplicationController
     @users = params[:request][:user_ids].reject{|e| e == ""}
     @request.users << User.find(@users)
     if @request.save
+      @request.create_activity :create, owner: current_user
       redirect_to requests_path
     else
       render action: :new
@@ -43,6 +44,7 @@ class RequestsController < ApplicationController
     @request.users << User.find(@users)
     respond_to do |format|
       if @request.update(request_params)
+        @request.create_activity :update, owner: current_user
         format.html { redirect_to @request, notice: 'RFI was successfully updated.' }
       else
         format.html { render :edit }
@@ -67,6 +69,7 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:request_id])
     @request.update(status: "Void")
     respond_to do |format|
+      @request.create_activity :void, owner: current_user
       format.html { redirect_to requests_path, notice: 'RFI was successfully voided.' }
     end
   end

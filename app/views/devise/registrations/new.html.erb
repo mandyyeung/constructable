@@ -9,11 +9,6 @@
   </div>
 
   <div class="field">
-    <%= f.label :category %><br />
-    <%= f.text_field :category %>
-  </div>
-
-  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email %>
   </div>
@@ -29,6 +24,12 @@
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label "User Type" %><br />
+    <%= f.select :category, options_for_select(['GC Team','Design Team','Subcontractor','Owner','Consultant'], resource.category), {} %>
   </div>
 
   <br>

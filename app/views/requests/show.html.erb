@@ -78,9 +78,9 @@
         <div class="panel-body">
           <ul class="media-list">
             <li class="media">
-              <%= image_tag('companies/'+ response.user.avatar, class: "pull-left") %>
+              <%= image_tag(response.user.avatar, class: "pull-left") %>
               <div class="media-body">
-                <p class="text-muted">Response by <strong><%= response.user.full_name %> (<%= response.user.company %>)</strong> <%= local_time_ago(response.created_at) %></p>
+                <p class="text-muted">Response by <strong><%= response.user.full_name %> (<%= response.user.category %>)</strong> <%= local_time_ago(response.created_at) %></p>
                 <p><< Tags will go here?? >></p>
               </div>
             </li>
@@ -99,7 +99,7 @@
     <%= div_for comment do %>
       <ul class="media-list">
         <li class="media">
-          <%= image_tag('companies/'+ comment.user.avatar, class: "pull-left") %>
+          <%= image_tag(comment.user.avatar, class: "pull-left") %>
           <div class="media-body">
             <p class="text-muted">Response by <strong><%= comment.user.full_name %> (<%= comment.user.category %>)</strong> <%= local_time_ago(comment.created_at) %></p>
             <p><%= markdownit(comment.body) %></p>

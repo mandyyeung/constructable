@@ -1,0 +1,7 @@
+added a comment to
+
+<% if activity.trackable %>
+  RFI# <%= activity.trackable.request.id %> - <%= activity.trackable.request.subject %>
+<% else %>
+  which has since been removed
+<% end %>

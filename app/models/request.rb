@@ -19,6 +19,8 @@
 #
 
 class Request < ActiveRecord::Base
+  include PublicActivity::Common
+
   has_many :responses
   has_many :comments
   has_many :recipients

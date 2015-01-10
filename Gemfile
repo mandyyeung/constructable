@@ -19,6 +19,7 @@ gem 'github-markdown'
 gem 'sanitize'
 gem 'filepicker-rails'
 gem 'acts-as-taggable-on', '~> 3.4'
+gem 'public_activity'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'

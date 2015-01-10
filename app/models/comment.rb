@@ -11,6 +11,8 @@
 #
 
 class Comment < ActiveRecord::Base
+  include PublicActivity::Common
+  
   belongs_to :request
   belongs_to :user
 

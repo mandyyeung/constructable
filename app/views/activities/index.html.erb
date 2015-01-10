@@ -1,0 +1,9 @@
+<h1>Team Activities</h1>
+<% @activities.each do |activity| %>
+  <div class="activity">
+    <% if activity.owner %>
+      <strong> <%= activity.owner.full_name %> (<%= activity.owner.category %>)</strong>
+      <%= render_activity activity %>
+    <% end %>
+  </div>
+<% end %>
