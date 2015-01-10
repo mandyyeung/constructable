@@ -36,7 +36,7 @@
         <li class="media">
           <%= image_tag('http://placehold.it/64x64', class: "pull-left") %>
           <div class="media-body">
-            <p class="text-muted">Created by <strong><%= @request_user.full_name %> (<%= @request_user.company %>)</strong> <%= local_time_ago(@request.updated_at) %></p>
+            <p class="text-muted">Created by <strong>Example (<%= @request_user.company %>)</strong> <%= local_time_ago(@request.updated_at) %></p>
             <p>
               <strong>CC: </strong>
               <% @request.users[0...-1].each do |user| %>
