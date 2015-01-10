@@ -65,7 +65,7 @@
     </div>
     <div class="panel-footer">
       <strong>Tags</strong> <span class="badge"><%= @request.tag_list.count %> </span>
-      <%= raw @request.tag_list.map { |t| link_to t, '#' }.join(', ') %>
+      <%= raw @request.tag_list.map { |t| link_to t.name, tag_path(t) }.join(', ') %>
     </div>
   </div>
 
