@@ -4,7 +4,6 @@
       <%= search_form_for @q, url: search_requests_path, html: {method: :post, class: "form-inline"} do |f| %>
         <!-- Working on this -->
       <% end %>
-      <h4><< Filters to go here! >></h4>
     </div>
     <div class="col-sm-6 col-md-6">
       <%= search_form_for @q, html: {class: "form-inline"} do |f| %>
@@ -33,16 +32,22 @@
           <th class="sort"><%= sortable "due", "Due" %></th>
           <th class="sort"><%= sortable "responsed", "Responded" %></th>
           <th class="sort"><%= sortable "status", "Status" %></th>
-          <% if current_user && current_user.admin? %>
-            <th>Edit/Void</th>
-          <% end %>
         </tr>
       </thead>
       <tbody>
         <% @requests.each do |request| %>
         <tr>
           <th scope="row" class="rfiNum"><%= request.id %></th>
-          <td><%= link_to truncate(request.subject, length: 50), request_path(request) %></td>
+            <% if current_user.full_name == request.from || current_user.admin? %>
+              <td class="title">
+            <% else %>
+              <td>
+            <% end %>
+            <%= link_to truncate(request.subject, length: 50), request_path(request) %>
+            <span class="admin">
+              - <%= link_to "Edit", edit_request_path(request) %> | <%= link_to "Void", request_void_path(request) %>
+            </span>
+          </td>
           <td><%= request.from %></td>
           <td><%= request.to %></td>
           <td><%= request.due.strftime("%m/%d/%Y") %></td>
@@ -52,11 +57,6 @@
             <% end %>
           </td>
           <td><span class="label"><%= request.status %></span></td>
-          <% if current_user && current_user.admin? %>
-            <td><%= link_to "Edit", edit_request_path(request) %>/
-              <%= link_to "Void", request_void_path(request) %>
-            </td>
-          <% end %>
         </tr>
         <% end %>
       </tbody>

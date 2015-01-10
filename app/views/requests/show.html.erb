@@ -34,9 +34,9 @@
       </table>
       <ul class="media-list">
         <li class="media">
-          <%= image_tag('http://placehold.it/64x64', class: "pull-left") %>
+          <%= image_tag(@request_user.avatar, class: "pull-left") %>
           <div class="media-body">
-            <p class="text-muted">Created by <strong>Example (<%= @request_user.company %>)</strong> <%= local_time_ago(@request.updated_at) %></p>
+            <p class="text-muted">Created by <strong><%= @request_user.full_name %> (<%= @request_user.category %>)</strong> <%= local_time_ago(@request.updated_at) %></p>
             <p>
               <strong>CC: </strong>
               <% @request.users[0...-1].each do |user| %>
@@ -101,7 +101,7 @@
         <li class="media">
           <%= image_tag('companies/'+ comment.user.avatar, class: "pull-left") %>
           <div class="media-body">
-            <p class="text-muted">Response by <strong><%= comment.user.full_name %> (<%= comment.user.company %>)</strong> <%= local_time_ago(comment.created_at) %></p>
+            <p class="text-muted">Response by <strong><%= comment.user.full_name %> (<%= comment.user.category %>)</strong> <%= local_time_ago(comment.created_at) %></p>
             <p><%= markdownit(comment.body) %></p>
           </div>
         </li>

@@ -1,7 +1,29 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+# User data generated with data from the Random User API
+User.create!(full_name: 'Erin Miller', email: 'erin.miller@gcteam.com', category: 'GC Team', password: 'password123', password_confirmation: 'password123', avatar: 'http://api.randomuser.me/portraits/thumb/women/80.jpg')
+User.create!(full_name: 'Dwayne Burton', email: 'dwayne.burton@gcteam.com', category: 'GC Team', password: 'password123', password_confirmation: 'password123', avatar: 'http://api.randomuser.me/portraits/thumb/men/27.jpg')
+User.create!(full_name: 'Alicia Wells', email: 'alicia.wells@gcteam.com', category: 'GC Team', password: 'password123', password_confirmation: 'password123', avatar: 'http://api.randomuser.me/portraits/thumb/women/31.jpg')
+User.create!(full_name: 'Patsy Hamilton', email: 'patsy.hamilton@gcteam.com', category: 'GC Team', password: 'password123', password_confirmation: 'password123', avatar: 'http://api.randomuser.me/portraits/thumb/women/84.jpg')
+User.create!(full_name: 'Anthony Stanley', email: 'anthony.stanley@gcteam.com', category: 'GC Team', password: 'password123', password_confirmation: 'password123', avatar: 'http://api.randomuser.me/portraits/thumb/men/42.jpg')
+User.create!(full_name: 'Shawn Richards', email: 'shawn.richards@gcteam.com', category: 'GC Team', password: 'password123', password_confirmation: 'password123', avatar: 'http://api.randomuser.me/portraits/thumb/men/23.jpg')
+User.create!(full_name: 'Jeanette Wallace', email: 'jeanette.wallace@gcteam.com', category: 'GC Team', password: 'password123', password_confirmation: 'password123', avatar: 'http://api.randomuser.me/portraits/thumb/women/67.jpg')
+User.create!(full_name: 'Renee Black', email: 'renee.black@gcteam.com', category: 'GC Team', password: 'password123', password_confirmation: 'password123', avatar: 'http://api.randomuser.me/portraits/thumb/women/73.jpg')
+User.create!(full_name: 'Stephanie Scott', email: 'stephanie.scott@gcteam.com', category: 'GC Team', password: 'password123', password_confirmation: 'password123', avatar: 'http://api.randomuser.me/portraits/thumb/women/75.jpg')
+User.create!(full_name: 'Tony Carroll', email: 'tony.carroll@gcteam.com', category: 'GC Team', password: 'password123', password_confirmation: 'password123', avatar: 'http://api.randomuser.me/portraits/thumb/men/75.jpg')
+User.create!(full_name: 'Gordon Horton', email: 'gordon.horton@designteam.com', category: 'Design Team', password: 'password123', password_confirmation: 'password123', avatar: 'http://api.randomuser.me/portraits/thumb/men/9.jpg')
+User.create!(full_name: 'Eddie Wheeler', email: 'eddie.wheeler@designteam.com', category: 'Design Team', password: 'password123', password_confirmation: 'password123', avatar: 'http://api.randomuser.me/portraits/thumb/men/99.jpg')
+User.create!(full_name: 'Constance Hawkins', email: 'constance.hawkins@designteam.com', category: 'Design Team', password: 'password123', password_confirmation: 'password123', avatar: 'http://api.randomuser.me/portraits/thumb/women/11.jpg')
+User.create!(full_name: 'Harold Sanders', email: 'harold.sanders@designteam.com', category: 'Design Team', password: 'password123', password_confirmation: 'password123', avatar: 'http://api.randomuser.me/portraits/thumb/men/58.jpg')
+User.create!(full_name: 'Fred Lee', email: 'fred.lee@designteam.com', category: 'Design Team', password: 'password123', password_confirmation: 'password123', avatar: 'http://api.randomuser.me/portraits/thumb/men/20.jpg')
+User.create!(full_name: 'Brayden Hamilton', email: 'brayden.hamilton@subcontractor.com', category: 'Subcontractor', password: 'password123', password_confirmation: 'password123', avatar: 'http://api.randomuser.me/portraits/thumb/men/70.jpg')
+User.create!(full_name: 'Scott Walters', email: 'scott.walters@subcontractor.com', category: 'Subcontractor', password: 'password123', password_confirmation: 'password123', avatar: 'http://api.randomuser.me/portraits/thumb/men/8.jpg')
+User.create!(full_name: 'Darrell Dunn', email: 'darrell.dunn@subcontractor.com', category: 'Subcontractor', password: 'password123', password_confirmation: 'password123', avatar: 'http://api.randomuser.me/portraits/thumb/men/24.jpg')
+User.create!(full_name: 'Kenzi Gonzalez', email: 'kenzi.gonzalez@subcontractor.com', category: 'Subcontractor', password: 'password123', password_confirmation: 'password123', avatar: 'http://api.randomuser.me/portraits/thumb/women/27.jpg')
+User.create!(full_name: 'Sebastian Mills', email: 'sebastian.mills@subcontractor.com', category: 'Subcontractor', password: 'password123', password_confirmation: 'password123', avatar: 'http://api.randomuser.me/portraits/thumb/men/69.jpg')
+User.create!(full_name: 'Brayden Brewer', email: 'brayden.brewer@subcontractor.com', category: 'Subcontractor', password: 'password123', password_confirmation: 'password123', avatar: 'http://api.randomuser.me/portraits/thumb/men/56.jpg')
+User.create!(full_name: 'Jessica Cunningham', email: 'jessica.cunningham@subcontractor.com', category: 'Subcontractor', password: 'password123', password_confirmation: 'password123', avatar: 'http://api.randomuser.me/portraits/thumb/women/21.jpg')
+User.create!(full_name: 'Patrick Douglas', email: 'patrick.douglas@subcontractor.com', category: 'Subcontractor', password: 'password123', password_confirmation: 'password123', avatar: 'http://api.randomuser.me/portraits/thumb/men/11.jpg')
+User.create!(full_name: 'Jack Harper', email: 'jack.harper@owner.com', category: 'Owner', password: 'password123', password_confirmation: 'password123', avatar: 'http://api.randomuser.me/portraits/thumb/men/50.jpg')
+User.create!(full_name: 'Francis Burns', email: 'francis.burns@owner.com', category: 'Owner', password: 'password123', password_confirmation: 'password123', avatar: 'http://api.randomuser.me/portraits/thumb/men/73.jpg')
+User.create!(full_name: 'Wanda Graham', email: 'wanda.graham@owner.com', category: 'Owner', password: 'password123', password_confirmation: 'password123', avatar: 'http://api.randomuser.me/portraits/thumb/women/28.jpg')
+User.create!(full_name: 'Kurt Obrien', email: 'kurt.obrien@consultant.com', category: 'Consultant', password: 'password123', password_confirmation: 'password123', avatar: 'http://api.randomuser.me/portraits/thumb/men/68.jpg')
+User.create!(full_name: 'Willard Miller', email: 'willard.miller@consultant.com', category: 'Consultant', password: 'password123', password_confirmation: 'password123', avatar: 'http://api.randomuser.me/portraits/thumb/men/45.jpg')

@@ -4,13 +4,8 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, class: "form-control", disabled: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, class: "form-control", disabled: true %>
+    <%= f.label :full_name %><br />
+    <%= f.text_field :full_name, class: "form-control", disabled: true %>
   </div>
 
   <div class="field">
@@ -19,8 +14,13 @@
   </div>
 
   <div class="field">
-    <%= f.label :company %><br />
-    <%= f.text_field :company, class: "form-control" %>
+    <%= f.label :category %><br />
+    <%= f.text_field :category, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :avatar %><br />
+    <%= f.text_field :avatar, class: "form-control" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

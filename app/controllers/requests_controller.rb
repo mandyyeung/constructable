@@ -16,7 +16,7 @@ class RequestsController < ApplicationController
   def show
     @response = Response.new
     @comment = Comment.new
-    @request_user = User.first
+    @request_user = User.find_by(full_name: @request.from)
   end
 
   def new
@@ -50,6 +50,7 @@ class RequestsController < ApplicationController
     end
   end
 
+  # Not used
   def destroy
     @request.destroy
     respond_to do |format|

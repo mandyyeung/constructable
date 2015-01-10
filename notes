@@ -1,6 +1,7 @@
 Models & Database Structure:
 1. Users
-  - Devise (first_name:string, last_name:string, email:string, pswd:string)
+  - Devise (first_name:string, last_name:string, email:string, pswd:string) # superseded
+  - Devise (full_name:string, email:string, pswd:string, category:string, avatar:string)
   has_many :requests
   has_many :reponses
 2. Request

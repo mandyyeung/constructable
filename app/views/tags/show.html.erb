@@ -25,7 +25,7 @@
         <td><%= request.due.strftime("%m/%d/%Y") %></td>
         <td>
           <% if request.responses.first %>
-          <%= request.responses.first.created_at.strftime("%m/%d/%Y") %>
+            <%= request.responses.first.created_at.strftime("%m/%d/%Y") %>
           <% end %>
         </td>
         <td><span class="label"><%= request.status %></span></td>

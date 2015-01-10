@@ -15,12 +15,10 @@
 #  last_sign_in_ip        :string
 #  created_at             :datetime
 #  updated_at             :datetime
-#  first_name             :string
-#  last_name              :string
 #  admin                  :boolean          default("false")
-#  company                :string
-#  avatar                 :string
-#  trade                  :string
+#  avatar                 :string           default("http://placehold.it/64x64")
+#  full_name              :string
+#  category               :string           default("GC Team")
 #
 # Indexes
 #
@@ -40,8 +38,6 @@ class User < ActiveRecord::Base
   has_many :recipients
   has_many :requests, through: :recipients
 
-  def full_name
-    "#{first_name} #{last_name}"
-  end
+  validates :full_name, presence: true
 
 end

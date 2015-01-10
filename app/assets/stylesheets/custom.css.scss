@@ -102,8 +102,14 @@ text {
 /* Admin Edit and Void links */
 .title .admin, .admin {
   display: none;
+  a {
+    color: #808080;
+  }
 }
 
 .title.hover .admin {
   display: inline;
+  a:hover {
+    color: #000;
+  }
 }
