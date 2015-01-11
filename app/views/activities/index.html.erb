@@ -1,9 +1,20 @@
-<h1>Team Activities</h1>
-<% @activities.each do |activity| %>
-  <div class="activity">
+<h1><span class="glyphicon glyphicon-bell text-muted" aria-hidden="true"></span> RFI Activity Stream</h1>
+<hr>
+
+<div id="activities">
+  <% @activities.each do |activity| %>
     <% if activity.owner %>
-      <strong> <%= activity.owner.full_name %> (<%= activity.owner.category %>)</strong>
-      <%= render_activity activity %>
+      <div class="media">
+        <%= image_tag(activity.owner.avatar, class: "pull-left") %>
+        <div class="media-body">
+          <strong> <%= activity.owner.full_name %> (<%= activity.owner.category %>)</strong>
+          <%= render_activity activity %>
+        </div>
+      </div>
     <% end %>
-  </div>
-<% end %>
+  <% end %>
+</div>
+
+<div id="infinite-scrolling">
+  <%= will_paginate @activities %>
+</div>

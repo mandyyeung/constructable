@@ -1,7 +1,10 @@
 updated
 
 <% if activity.trackable %>
-  RFI# <%= activity.trackable.id %> - <%= activity.trackable.subject %>
+  <%= link_to %{RFI# #{activity.trackable.id} - #{activity.trackable.subject}},request_path(activity.trackable.id) %>
 <% else %>
   which has since been removed
 <% end %>
+
+<div class="well"><%= activity.trackable.body %></div>
+<span class="text-muted"><%= local_time_ago(activity.trackable.updated_at) %><span>

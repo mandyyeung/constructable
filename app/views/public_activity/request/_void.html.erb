@@ -5,3 +5,7 @@ voided
 <% else %>
   which has since been removed
 <% end %>
+<br>
+
+<div class="well"><s><%= activity.trackable.body %></s></div>
+<span class="text-muted"><%= local_time_ago(activity.trackable.updated_at) %><span>

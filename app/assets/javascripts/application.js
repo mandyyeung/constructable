@@ -21,5 +21,6 @@
 //= require to-markdown
 //= require local_time
 //= require select2
+//= require activities
 //= require custom
 //= require turbolinks

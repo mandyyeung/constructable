@@ -1,7 +1,10 @@
-added a comment to
+commented on
 
 <% if activity.trackable %>
-  RFI# <%= activity.trackable.request.id %> - <%= activity.trackable.request.subject %>
+  <%= link_to %{RFI# #{activity.trackable.request.id} - #{activity.trackable.request.subject}}, request_path(activity.trackable.request.id, anchor: "comment_#{activity.trackable.id}") %>
 <% else %>
   which has since been removed
 <% end %>
+
+<div class="well"><%= activity.trackable.body %></div>
+<span class="text-muted"><%= local_time_ago(activity.trackable.created_at) %><span>
