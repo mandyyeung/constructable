@@ -1,7 +1,11 @@
 <div class="tabbable">
   <ul class="nav nav-tabs">
-    <li role="presentation" class="active"><a href="#comments_form" data-toggle="tab">Comment</a></li>
-    <li role="presentation"><a href="#requests_form" data-toggle="tab">RFI Response</a></li>
+    <% if current_user.category == "Design Team" %>
+      <li role="presentation" class="active"><a href="#requests_form" data-toggle="tab">RFI Response</a></li>
+      <li role="presentation"><a href="#comments_form" data-toggle="tab">Comment</a></li>
+    <% else %>
+      <li role="presentation" class="active"><a href="#comments_form" data-toggle="tab">Comment</a></li>
+    <% end %>
   </ul>
   <div class="tab-content">
     <div id="comments_form" class="tab-pane active">

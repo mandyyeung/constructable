@@ -93,8 +93,8 @@
     <% end %>
   <% end %>
 
-<h3>Comments</h3>
-<% if @request.comments %>
+<% if @request.comments.count > 0 %>
+  <h3>Comments</h3>
   <% @request.comments.each do |comment| %>
     <%= div_for comment do %>
       <ul class="media-list">
