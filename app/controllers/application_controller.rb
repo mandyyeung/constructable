@@ -15,6 +15,8 @@ class ApplicationController < ActionController::Base
   end
 
   def set_latest_activities
-    @latest_activities = PublicActivity::Activity.order("created_at desc").where(owner_id: User.all.ids - [current_user.id], owner_type: 'User').take(3)
+    if user_signed_in?
+      @latest_activities = PublicActivity::Activity.order("created_at desc").where(owner_id: User.all.ids - [current_user.id], owner_type: 'User').take(3)
+    end
   end
 end
