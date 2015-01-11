@@ -59,23 +59,21 @@
               <li class="heading"><strong>Latest Activities</strong></li>
               <li class="divider"></li>
               <div class="notifications-wrapper">
-                <li class="notification-item">
-                  <span class="item-title">Mandy Yeung (GC Team) voided RFI# 8</span>
-                  <small class="text-muted"> &bull; 1 day ago</small>
-                </li>
-                <li class="notification-item">
-                  <span class="item-title">Mandy Yeung (GC Team) updated RFI# 16</span>
-                  <small class="text-muted"> &bull; 1 day ago</small>
-                </li>
-                <li class="notification-item">
-                  <span class="item-title">Mandy Yeung (GC Team) commented on RFI# 10</span>
-                  <small class="text-muted"> &bull; 1 day ago</small>
-                </li>
+                <% @latest_activities.each do |activity| %>
+                  <li class="notification-item">
+                    <!-- Working on this -->
+                    <span class="item-title">
+                      <strong> <%= activity.owner.full_name %> (<%= activity.owner.category %>)</strong>
+                      updated <%= link_to %{RFI# #{activity.trackable.id}}, request_path(activity.trackable.id) %>
+                    </span>
+                    <small class="text-muted"> &bull; <%= local_time_ago(activity.trackable.updated_at) %></small>
+                  </li>
+                <% end %>
               </div>
               <li class="divider"></li>
-              <li>
+              <li class="heading">
                 <%= link_to activities_path do %>
-                View All <i class="glyphicon glyphicon-circle-arrow-right"></i>
+                  View All <i class="glyphicon glyphicon-circle-arrow-right"></i>
                 <% end %>
               </li>
             </ul>

@@ -129,11 +129,15 @@ text {
 
 .heading {
   display: block;
-  padding: 3px 20px;
+  padding: 3px 10px;
+}
+
+li.heading a {
+  padding: 3px 5px;
 }
 
 .notifications {
-  min-width:220px;
+  min-width:250px;
 }
 
 .notifications-wrapper {
