@@ -8,7 +8,11 @@
     <% end %>
   </ul>
   <div class="tab-content">
-    <div id="comments_form" class="tab-pane active">
+    <% if current_user.category == "Design Team" %>
+      <div id="comments_form" class="tab-pane">
+    <% else %>
+      <div id="comments_form" class="tab-pane active">
+    <% end %>
       <%= form_for [@request, @comment] do |f| %>
       <div class="form-group">
         <%= f.text_area :body, placeholder: " Post a comment", rows: 5, class: "form-control", data: {provide: "markdown"} %>
@@ -18,7 +22,11 @@
       </div>
       <% end %>
     </div>
-    <div id="requests_form" class="tab-pane">
+    <% if current_user.category == "Design Team" %>
+      <div id="requests_form" class="tab-pane active">
+    <% else %>
+      <div id="requests_form" class="tab-pane">
+    <% end %>
       <%= render 'responses/form' %>
     </div>
   </div>
