@@ -3,8 +3,12 @@ created
 <% if activity.trackable %>
   <%= link_to %{RFI# #{activity.trackable.id} - #{activity.trackable.subject}},request_path(activity.trackable.id) %>
 <% else %>
-  which has since been removed
+  an RFI, which has since been removed
 <% end %>
 
+<% if activity.trackable %>
 <div class="well"><%= activity.trackable.body %></div>
-<span class="text-muted"><%= local_time_ago(activity.trackable.created_at) %><span>
+<span class="text-muted"><%= local_time_ago(activity.trackable.updated_at) %><span>
+  <% else %>
+<span class="text-muted"><%= local_time_ago(activity.updated_at) %><span>
+  <% end %>
