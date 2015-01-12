@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Constructable</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/logo.ico" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+    </script>
+  <![endif]-->
+  <style>
+    body {
+      font-family: Lato, sans-serif;
+      padding-top: 70px;
+    }
+
+    a {
+      -o-transition: color 0.5s linear;
+      -moz-transition: color 0.5s linear;
+      -webkit-transition: color 0.5s linear;
+      transition: color 0.5s linear;
+
+      &:hover {
+        color: #ccc;
+        text-decoration: none;
+      }
+    }
+
+    .navbar-brand {
+      padding: 10px 15px;
+    }
+
+    .navbar-brand > img {
+      display: inline;
+    }
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+          <img src="http://constructable.herokuapp.com/assets/logo-a16d245dd8abd68283c928b30415d40f.jpg" alt="Logo" />
+          constructable
+        </a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">RFIs<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/requests">View All</a></li>
+              <li><a href="/requests/new">New RFI</a></li>
+              <li><a href="/requests.csv">Export to CSV</a></li>
+              <li class="divider"></li>
+              <li><a href="/dashboard">Dashboard</a></li>
+            </ul>
+          </li>
+          <li><a href="/about">About</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mandy Yeung<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/users/edit">Profile</a></li>
+              <li><a rel="nofollow" data-method="delete" href="/users/sign_out">Log Out</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Oops!</h1>
+    <p>Something went wrong, please go back and try again.</p>
+    <p>If the problem persists, please <a href="mailto:girloncode@gmail.com?subject=Something%20went%20wrong%20on%20Constructable">report it</a>!</p>
+
+  </div>
+  <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
