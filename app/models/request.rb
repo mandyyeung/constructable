@@ -33,6 +33,7 @@ class Request < ActiveRecord::Base
 
   acts_as_taggable
 
+  validates :from, presence: true
   validates :subject, presence: true
   validates :body, presence: true
 
