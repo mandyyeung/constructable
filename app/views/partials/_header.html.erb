@@ -65,10 +65,14 @@
                       <!-- Working on this -->
                       <span class="item-title">
                         <strong> <%= activity.owner.full_name %> (<%= activity.owner.category %>)</strong>
-                        <!-- Working on this -->
-                        <!-- updated <%= link_to %{RFI# #{activity.trackable.id}}, request_path(activity.trackable.id) %> -->
-                      </span>
-                      <small class="text-muted"> &bull; <%= local_time_ago(activity.trackable.updated_at) %></small>
+                        <% if activity.trackable %>
+                          updated <%= link_to %{RFI# #{activity.trackable.id}}, request_path(activity.trackable.id) %>
+                          <small class="text-muted"> &bull; <%= local_time_ago(activity.trackable.updated_at) %></small>
+                        <% else %>
+                          updated an RFI
+                          <small class="text-muted"> &bull; <%= local_time_ago(activity.updated_at) %></small>
+                        <% end %>
+                        </span>
                     </li>
                   <% end %>
                 <% else %>
