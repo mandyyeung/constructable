@@ -9,6 +9,7 @@
         <th>To</th>
         <th>Due</th>
         <th>Responded</th>
+        <th><span class="glyphicon glyphicon-paperclip"></span></th>
         <th>Status</th>
       </tr>
     </thead>
@@ -32,6 +33,11 @@
           <td>
             <% if request.responses.first %>
             <%= request.responses.first.created_at.strftime("%m/%d/%Y") %>
+            <% end %>
+          </td>
+          <td>
+            <% if request.filepicker_url != "" %>
+              <span class="glyphicon glyphicon-paperclip"></span>
             <% end %>
           </td>
           <td><span class="label"><%= request.status %></span></td>

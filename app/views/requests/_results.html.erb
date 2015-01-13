@@ -1,7 +1,7 @@
 <% if @requests.count > 0 %>
   <div class="row search">
     <div class="col-sm-6 col-md-6">
-      <%= search_form_for @q, url: search_requests_path, html: {method: :post, class: "form-inline"} do |f| %>
+      <% search_form_for @q, url: search_requests_path, html: {method: :post, class: "form-inline"} do |f| %>
         <!-- Working on this -->
       <% end %>
     </div>
@@ -31,7 +31,7 @@
           <th class="sort"><%= sortable "to", "To" %></th>
           <th class="sort"><%= sortable "due", "Due" %></th>
           <th class="sort"><%= sortable "responsed", "Responded" %></th>
-          <th class="sort"><%= sortable "filepicker_url", '<span class="glyphicon glyphicon-paperclip"></span>'.html_safe %></th>s
+          <th class="sort"><%= sortable "filepicker_url", '<span class="glyphicon glyphicon-paperclip"></span>'.html_safe %></th>
           <th class="sort"><%= sortable "status", "Status" %></th>
         </tr>
       </thead>
