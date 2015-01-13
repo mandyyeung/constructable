@@ -6,8 +6,8 @@ Current features include an analytics dashboard, a team activity stream, user pe
 
 ## Screenshots
 
-![Dashboard](http://i.imgur.com/OhXCm7n.png)
-![RFI Log with Pagination](http://i.imgur.com/eUgpfre.png)
+![Dashboard](http://i.imgur.com/kWVpqnD.png)
+![RFI Log with Pagination](http://i.imgur.com/QPurcPb.png)
 ![Sample open RFI](http://i.imgur.com/FgsP0Tl.png)
 
 ## Future Improvements
