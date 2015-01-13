@@ -61,6 +61,6 @@ class Request < ActiveRecord::Base
   end
 
   def overdue?
-    self.due < Date.today
+    self.status == "Open" && self.due < Date.today
   end
 end
