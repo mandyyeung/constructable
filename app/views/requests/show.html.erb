@@ -73,7 +73,7 @@
     <% @request.responses.each do |response| %>
       <div class="panel panel-info">
         <div class="panel-heading">
-          <strong class="panel-title">Primary Response</strong>
+          <strong class="panel-title">RFI Response</strong>
         </div>
         <div class="panel-body">
           <ul class="media-list">
@@ -81,7 +81,6 @@
               <%= image_tag(response.user.avatar, class: "pull-left") %>
               <div class="media-body">
                 <p class="text-muted">Response by <strong><%= response.user.full_name %> (<%= response.user.category %>)</strong> <%= local_time_ago(response.created_at) %></p>
-                <p><< Tags will go here?? >></p>
               </div>
             </li>
           </ul>
