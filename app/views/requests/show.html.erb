@@ -5,6 +5,9 @@
     <div class="panel-heading">
   <% end %>
       <strong class="panel-title">RFI #<%= @request.id %> - <%= @request.subject %> -
+        <% if @request.overdue? %>
+          <span class="pull-right glyphicon glyphicon-exclamation-sign"></span>
+        <% end %>
         <span class="pull-right label"><%= @request.status %></span>
       </strong>
       <span class="admin">

@@ -183,6 +183,12 @@ li.heading a {
 /* Filepicker thumbnail */
 
 .fp-thumbnail {
-  height: 90px;
-  width: 160px;
+  height: 180px;
+  width: 320px;
+}
+
+/* Overdue RFI Indicator */
+
+.glyphicon-exclamation-sign {
+  color: #B33A3A;
 }

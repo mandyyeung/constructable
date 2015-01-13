@@ -62,7 +62,11 @@
               <span class="glyphicon glyphicon-paperclip"></span>
             <% end %>
           </td>
-          <td><span class="label"><%= request.status %></span></td>
+          <td><span class="label"><%= request.status %></span>
+            <% if request.overdue? %>
+              <span class="glyphicon glyphicon-exclamation-sign"></span>
+            <% end %>
+          </td>
         </tr>
         <% end %>
       </tbody>

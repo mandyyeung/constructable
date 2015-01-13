@@ -59,4 +59,8 @@ class Request < ActiveRecord::Base
     self.opened ||= Date.today if self.new_record?
     self.due ||= (Date.today + 14) if self.new_record?
   end
+
+  def overdue?
+    self.due < Date.today
+  end
 end
