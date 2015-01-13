@@ -31,6 +31,7 @@
           <th class="sort"><%= sortable "to", "To" %></th>
           <th class="sort"><%= sortable "due", "Due" %></th>
           <th class="sort"><%= sortable "responsed", "Responded" %></th>
+          <th class="sort"><%= sortable "filepicker_url", '<span class="glyphicon glyphicon-paperclip"></span>'.html_safe %></th>s
           <th class="sort"><%= sortable "status", "Status" %></th>
         </tr>
       </thead>
@@ -54,6 +55,11 @@
           <td>
             <% if request.responses.first %>
               <%= request.responses.first.created_at.strftime("%m/%d/%Y") %>
+            <% end %>
+          </td>
+          <td>
+            <% if request.filepicker_url != "" %>
+              <span class="glyphicon glyphicon-paperclip"></span>
             <% end %>
           </td>
           <td><span class="label"><%= request.status %></span></td>
