@@ -6,7 +6,7 @@ class RequestsController < ApplicationController
 
   def index
     @q = Request.search(params[:q])
-    @requests = @q.result(distinct: true).order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 50)
+    @requests = @q.result(distinct: true).order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 10)
     respond_to do |format|
       format.html
       format.csv { render text: @requests.to_csv }
