@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :import, :dashboard, :search]
+  before_action :authenticate_user!, except: [:index, :import, :search]
   before_action :set_request, only: [:show, :edit, :update]
   before_action :requires_permission, only: [:edit, :update]
   helper_method :sort_column, :sort_direction
